@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		3D534FE2220584B000594F6E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D534FE1220584B000594F6E /* AppDelegate.m */; };
-		3D534FE5220584B000594F6E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D534FE4220584B000594F6E /* ViewController.m */; };
 		3D534FEA220584B200594F6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D534FE9220584B200594F6E /* Assets.xcassets */; };
 		3D534FED220584B200594F6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D534FEB220584B200594F6E /* LaunchScreen.storyboard */; };
 		3D534FF0220584B200594F6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D534FEF220584B200594F6E /* main.m */; };
@@ -140,8 +139,6 @@
 		3D534FDD220584B000594F6E /* Bajie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bajie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D534FE0220584B000594F6E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D534FE1220584B000594F6E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3D534FE3220584B000594F6E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3D534FE4220584B000594F6E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3D534FE9220584B200594F6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D534FEC220584B200594F6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D534FEE220584B200594F6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -347,8 +344,6 @@
 				3D534FF6220587DA00594F6E /* prefix.pch */,
 				3D534FE0220584B000594F6E /* AppDelegate.h */,
 				3D534FE1220584B000594F6E /* AppDelegate.m */,
-				3D534FE3220584B000594F6E /* ViewController.h */,
-				3D534FE4220584B000594F6E /* ViewController.m */,
 				3D534FE9220584B200594F6E /* Assets.xcassets */,
 				3D534FEB220584B200594F6E /* LaunchScreen.storyboard */,
 				3D534FEE220584B200594F6E /* Info.plist */,
@@ -900,7 +895,6 @@
 				3D5350BD22058A2700594F6E /* XYBGViewController.m in Sources */,
 				3D5350312205895400594F6E /* MOFSAddressPickerView.m in Sources */,
 				3D5350362205895400594F6E /* AFSoundManager.m in Sources */,
-				3D534FE5220584B000594F6E /* ViewController.m in Sources */,
 				3D5350B622058A2700594F6E /* RootViewController.m in Sources */,
 				3D5350C522058A2700594F6E /* UserDataViewController.m in Sources */,
 				3D53502E2205895400594F6E /* MOFSPickerView.m in Sources */,
