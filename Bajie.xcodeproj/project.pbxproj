@@ -132,6 +132,8 @@
 		3D53511922058A2800594F6E /* bg2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D5350B322058A2700594F6E /* bg2.mp3 */; };
 		3D53511A22058A2800594F6E /* bg1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D5350B422058A2700594F6E /* bg1.mp3 */; };
 		3D53511B22058A2800594F6E /* Logo.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D5350B522058A2700594F6E /* Logo.xib */; };
+		3D53511E2210444100594F6E /* jielogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D53511C2210444000594F6E /* jielogo@2x.png */; };
+		3D53511F2210444100594F6E /* jielogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D53511D2210444000594F6E /* jielogo.png */; };
 		CD419379880B2377A6FC20BB /* libPods-Bajie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */; };
 /* End PBXBuildFile section */
 
@@ -298,6 +300,8 @@
 		3D5350B322058A2700594F6E /* bg2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg2.mp3; sourceTree = "<group>"; };
 		3D5350B422058A2700594F6E /* bg1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg1.mp3; sourceTree = "<group>"; };
 		3D5350B522058A2700594F6E /* Logo.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Logo.xib; sourceTree = "<group>"; };
+		3D53511C2210444000594F6E /* jielogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jielogo@2x.png"; sourceTree = "<group>"; };
+		3D53511D2210444000594F6E /* jielogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jielogo.png; sourceTree = "<group>"; };
 		4DD2E4A7F8E03376FE5517B1 /* Pods-Bajie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bajie.release.xcconfig"; path = "Target Support Files/Pods-Bajie/Pods-Bajie.release.xcconfig"; sourceTree = "<group>"; };
 		74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bajie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C75C5ACDAA072B438F12CA3B /* Pods-Bajie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bajie.debug.xcconfig"; path = "Target Support Files/Pods-Bajie/Pods-Bajie.debug.xcconfig"; sourceTree = "<group>"; };
@@ -525,6 +529,8 @@
 		3D53505B22058A2700594F6E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3D53511D2210444000594F6E /* jielogo.png */,
+				3D53511C2210444000594F6E /* jielogo@2x.png */,
 				3D53505C22058A2700594F6E /* tab3.png */,
 				3D53505D22058A2700594F6E /* xiangbg */,
 				3D53506722058A2700594F6E /* inputbg.png */,
@@ -801,7 +807,9 @@
 				3D53510B22058A2800594F6E /* pause_button.png in Resources */,
 				3D53510A22058A2800594F6E /* xiang@2x.png in Resources */,
 				3D5350C622058A2700594F6E /* tab3.png in Resources */,
+				3D53511E2210444100594F6E /* jielogo@2x.png in Resources */,
 				3D5350EF22058A2800594F6E /* mylogo.png in Resources */,
+				3D53511F2210444100594F6E /* jielogo.png in Resources */,
 				3D5350CD22058A2700594F6E /* fotang_xiang1.png in Resources */,
 				3D5350C822058A2700594F6E /* xiuxing_xiang_zengyuan.png in Resources */,
 				3D5350CF22058A2700594F6E /* fotang_xiang2.png in Resources */,
