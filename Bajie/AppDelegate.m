@@ -27,7 +27,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 	self.enableIAP = YES;
-	[AVOSCloud setApplicationId:@"tSOwKL3PDeU14RDpnAbxSGlR-gzGzoHsz" clientKey:@"1vtCdlJQUYIB6GilTVpAopdb"];
+	[AVOSCloud setApplicationId:@"2Fj7IK14UNuHRun5nj87x7ag-gzGzoHsz" clientKey:@"INj6Y73FXpa5AGrhkbh9fG0Q"];
 	[AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 	// Override point for customization after application launch.
 	NSArray *centralManagerIdentifiers = launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey];
