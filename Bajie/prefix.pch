@@ -7,6 +7,7 @@
 #import <SVProgressHUD.h>
 #import "AppDelegate.h"
 #import "UIColor+Hex.h"
+#import <Colours.h>
 
 #define kDeviceWidth [UIScreen mainScreen].bounds.size.width
 #define KDeviceHeight [UIScreen mainScreen].bounds.size.height
@@ -15,9 +16,11 @@
 #define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
 #define APPALL ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 
-#define MMColorRed [UIColor colorWithHexString:@"FC3008"]
-#define MMColorShadowRed [UIColor colorWithHexString:@"BF0A10"]
-#define MMColorOrange [UIColor colorWithHexString:@"FB7C3D"]
+#define MMColorRed [UIColor carrotColor]
+//[UIColor colorWithHexString:@"FC3008"]
+#define MMColorShadowRed [UIColor coffeeColor]
+//[UIColor colorWithHexString:@"BF0A10"]
+#define MMColorOrange [UIColor goldenrodColor]
 #define MMColorYellow [UIColor colorWithHexString:@"E5DD0C"]
 #define MMColorGrey [UIColor colorWithHexString:@"CED6B4"]
 #define MMColorBlack [UIColor colorWithHexString:@"20260C"]

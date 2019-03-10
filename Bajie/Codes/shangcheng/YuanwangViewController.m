@@ -30,7 +30,6 @@
 
 @property(nonatomic,strong) UILabel *titleLabel;
 @property(nonatomic,strong) FUIButton *kindButton;
-@property(nonatomic,strong) UIButton *bgButton;
 @property(nonatomic,strong) UILabel *moneyLabel;
 @property(nonatomic,strong) UITextView *contentField;
 @property(nonatomic,strong) FUIButton *xyButton;
@@ -51,14 +50,14 @@
 		self.title = @"愿望";
 		self.view.backgroundColor = MMColorYellow;
 		
-		self.bigwish = @"吉祥运气";
-		self.smallwish = @"心想事成";
+		self.bigwish = @"";
+		self.smallwish = @"";
 		self.luck_no = 0;
 		
 		self.titleLabel = [UILabel new];
 		self.titleLabel.numberOfLines = 0;
 		self.titleLabel.textAlignment = NSTextAlignmentCenter;
-		self.titleLabel.text = @"在此写下您的愿望，许愿树祝您梦想成真！";
+		self.titleLabel.text = @"在此写下您的忏悔，祝您功德圆满！";
 		self.titleLabel.font = [UIFont fontWithName:@"Arial" size:14.0f];
 		[self.view addSubview:self.titleLabel];
 		
@@ -69,7 +68,7 @@
 		self.kindButton.cornerRadius = 6.0f;
 		self.kindButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
 		[self.kindButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-		[self.kindButton setTitle:@"求：吉祥运气-心想事成" forState:UIControlStateNormal];
+		[self.kindButton setTitle:@"选择忏悔类型" forState:UIControlStateNormal];
 		[self.kindButton addTarget:self action:@selector(kindPressed:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:self.kindButton];
 		
@@ -79,7 +78,7 @@
 		self.contentField.returnKeyType = UIReturnKeyDone;
 		self.contentField.delegate = self;
 		self.contentField.textColor = [UIColor blackColor];
-		self.contentField.placeholder = @"写下您的心愿吧！限制200个字哦。";
+		self.contentField.placeholder = @"写下您的忏悔，限制200个字。";
 		self.contentField.placeholderColor = [UIColor grayColor];
 		self.contentField.layer.borderWidth = 2.0f;
 		self.contentField.layer.borderColor = MMColorBlack.CGColor;
@@ -88,7 +87,7 @@
 		self.moneyLabel = [UILabel new];
 		self.moneyLabel.numberOfLines = 0;
 		self.moneyLabel.font = [UIFont boldFlatFontOfSize:16];
-		self.moneyLabel.text = [NSString stringWithFormat:@"为让愿望更快实现，我愿捐献：\n供奉佛前油灯。\n(捐献越多，您的许愿在许愿树中越靠前。)\n  ————%@",[tooles getnickname]];
+		self.moneyLabel.text = [NSString stringWithFormat:@"为挽回我此生功德，我愿捐献：\n供奉佛前油灯。\n(捐献越多，您的许愿在忏悔堂越靠前。)\n  ————%@",[tooles getnickname]];
 		[self.view addSubview:self.moneyLabel];
 		
 		self.moneyButton = [UIButton new];
@@ -101,13 +100,6 @@
 		[self.moneyButton addTarget:self action:@selector(moneyPressed:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:self.moneyButton];
 		
-		self.bgButton = [UIButton new];
-		[self.bgButton setTitle:@"选择许愿卡背景" forState:UIControlStateNormal];
-		[self.bgButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-		[self.bgButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%li.jpg",self.luck_no]] forState:UIControlStateNormal];
-		[self.bgButton addTarget:self action:@selector(bgPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:self.bgButton];
-		
 		self.xyButton = [FUIButton new];
 		self.xyButton.buttonColor = MMColorRed;
 		self.xyButton.shadowColor = MMColorShadowRed;
@@ -115,7 +107,7 @@
 		self.xyButton.cornerRadius = 6.0f;
 		self.xyButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
 		[self.xyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-		[self.xyButton setTitle:@"提  交  许  愿" forState:UIControlStateNormal];
+		[self.xyButton setTitle:@"提  交  忏  悔" forState:UIControlStateNormal];
 		[self.xyButton addTarget:self action:@selector(xyPressed:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:self.xyButton];
 		
@@ -138,7 +130,7 @@
 		self.anonySwitch.offColor = MMColorRed;
 		self.anonySwitch.onBackgroundColor = MMColorShadowRed;
 		self.anonySwitch.offBackgroundColor = MMColorShadowRed;
-		self.anonySwitch.on = NO;
+		self.anonySwitch.on = YES;
 		[self.view addSubview:self.anonySwitch];
 		
 		self.anonyText = [UILabel new];
@@ -175,14 +167,14 @@
 	[self.anonySwitch mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(ws.view).with.offset(20);
 		make.width.mas_equalTo(60);
-		make.bottom.mas_equalTo(ws.view).with.offset(-20);
+		make.bottom.mas_equalTo(ws.view).with.offset(-60);
 		make.height.mas_equalTo(20);
 	}];
 	
 	[self.anonyText mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(self.anonySwitch.mas_right).with.offset(10);
 		make.right.mas_equalTo(ws.view).with.offset(-20);
-		make.bottom.mas_equalTo(ws.view).with.offset(-20);
+		make.bottom.mas_equalTo(ws.view).with.offset(-60);
 		make.height.mas_equalTo(20);
 	}];
 	
@@ -207,17 +199,10 @@
 		make.height.mas_equalTo(40);
 	}];
 	
-	[self.bgButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(ws.view);
-		make.right.mas_equalTo(ws.view);
-		make.bottom.mas_equalTo(self.xyButton.mas_top).with.offset(-10);
-		make.height.mas_equalTo(60);
-	}];
-	
 	[self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(self.titleLabel.mas_left);
 		make.right.mas_equalTo(self.titleLabel.mas_right);
-		make.bottom.mas_equalTo(self.bgButton.mas_top).with.offset(-10);
+		make.bottom.mas_equalTo(self.xyButton.mas_top).with.offset(-10);
 		make.height.mas_equalTo(80);
 	}];
 	
@@ -302,7 +287,7 @@
 	[[MOFSPickerManager shareManger] showMOFSWishTypePickerWithTitle:nil cancelTitle:@"取消" commitTitle:@"完成" commitBlock:^(NSString *bwish, NSString *swish) {
 		self.bigwish = bwish;
 		self.smallwish = swish;
-		[self.kindButton setTitle:[NSString stringWithFormat:@"求：%@-%@",self.bigwish,self.smallwish] forState:UIControlStateNormal];
+		[self.kindButton setTitle:[NSString stringWithFormat:@"%@-%@",self.bigwish,self.smallwish] forState:UIControlStateNormal];
 	} cancelBlock:^{
 		
 	}];
@@ -316,7 +301,7 @@
 
 - (void)bgIndex:(NSInteger)bgid {
 	self.luck_no = bgid;
-	[self.bgButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%li.jpg",self.luck_no]] forState:UIControlStateNormal];
+//	[self.bgButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%li.jpg",self.luck_no]] forState:UIControlStateNormal];
 }
 
 -(void)saveWish {

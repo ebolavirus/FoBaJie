@@ -5,6 +5,7 @@ target 'Bajie' do
 
 pod 'AFNetworking'
 pod 'AVOSCloud'
+pod 'Colours'
 pod 'FlatUIKit'
 pod 'DNSInAppPurchaseManager'
 pod 'LKDBHelper'

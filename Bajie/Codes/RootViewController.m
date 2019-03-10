@@ -35,7 +35,7 @@
 		c1.tabBarItem.image=[UIImage imageNamed:@"tab1"];
 		
 		HuanyuanViewController *c4=[HuanyuanViewController new];
-		c4.tabBarItem.title=@"佛愿堂";
+		c4.tabBarItem.title=@"忏悔堂";
 		c4.tabBarItem.tag = 2;
 		c4.tabBarItem.image=[UIImage imageNamed:@"tab4"];
 		
@@ -85,7 +85,7 @@
 }
 
 -(void)theHelp:(id)sender {
-	NSString *helpStr = @"佛愿堂排名规则如下：\n1.基本规则：越新的许愿在佛愿堂中越靠前；\n2.基于基本规则，有两种方式可以让许愿在整体排名中向前提升：捐献和他人祈福；\n3.捐献的金额会产生排名提升值，1元为1天；且一条许愿因捐献而提升名次后，无法进行第二次捐献；\n4.他人祈福的提升值为1次=1天，但是不能自己给自己祈福；且每个人每天祈福他人的次数仅一次，而被祈福的次数是无上限的。";
+	NSString *helpStr = @"忏悔堂排名规则如下：\n1.基本规则：越新的忏悔在忏悔堂中越靠前；\n2.基于基本规则，有两种方式可以让忏悔在整体排名中向前提升：捐献和他人祝福；\n3.捐献的金额会产生排名提升值，1元为1天；且一条忏悔因捐献而提升名次后，无法进行第二次捐献；\n4.他人祝福的提升值为1次=1天，但是不能自己给自己祝福；且每个人每天祝福他人的次数仅一次。";
 	UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"排名规则" message:helpStr preferredStyle:UIAlertControllerStyleAlert];
 	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleCancel handler:nil];
 	[vc addAction:cancelAction];

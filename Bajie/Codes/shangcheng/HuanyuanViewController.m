@@ -54,7 +54,7 @@
 		self.singleToolbar.backgroundColor = MMColorRed;
 		[self.view addSubview:self.singleToolbar];
 		
-		self.mySegment = [[UISegmentedControl alloc] initWithItems:@[@"许愿列表",@"我的许愿"]];
+		self.mySegment = [[UISegmentedControl alloc] initWithItems:@[@"众生忏悔",@"我的忏悔"]];
 		[self.mySegment setTintColor:[UIColor whiteColor]];
 		[self.mySegment setBackgroundColor:MMColorRed];
 		self.mySegment.selectedSegmentIndex = 0;
