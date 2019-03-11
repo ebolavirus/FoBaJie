@@ -109,7 +109,7 @@
 		self.stoveButton.backgroundColor = [UIColor clearColor];
 		[self.view addSubview:self.stoveButton];
 		
-		FotaiVController *testVC = [[FotaiVController alloc] initWithFoID:9 andXiangID:0];
+		FotaiVController *testVC = [[FotaiVController alloc] initWithFoID:9 andXiangID:0 andVoterName:@""];
 		[self.view addSubview:testVC.view];
 		
 	}

@@ -186,6 +186,7 @@
 		3D9534BF22194EC1000E53EC /* pulldown.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534A922194EC1000E53EC /* pulldown.png */; };
 		3D9534C022194EC1000E53EC /* list_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534AA22194EC1000E53EC /* list_selected@2x.png */; };
 		3D9534C122194EC1000E53EC /* pullup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534AB22194EC1000E53EC /* pullup.png */; };
+		84F7C7D22236717800D55C78 /* shaoxiang_xm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84F7C7D12236717800D55C78 /* shaoxiang_xm.jpg */; };
 		CD419379880B2377A6FC20BB /* libPods-Bajie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */; };
 /* End PBXBuildFile section */
 
@@ -430,6 +431,7 @@
 		3D9534AB22194EC1000E53EC /* pullup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullup.png; sourceTree = "<group>"; };
 		4DD2E4A7F8E03376FE5517B1 /* Pods-Bajie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bajie.release.xcconfig"; path = "Target Support Files/Pods-Bajie/Pods-Bajie.release.xcconfig"; sourceTree = "<group>"; };
 		74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bajie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F7C7D12236717800D55C78 /* shaoxiang_xm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shaoxiang_xm.jpg; sourceTree = "<group>"; };
 		C75C5ACDAA072B438F12CA3B /* Pods-Bajie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bajie.debug.xcconfig"; path = "Target Support Files/Pods-Bajie/Pods-Bajie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -771,6 +773,7 @@
 		3D8AFA6C2232AB8900FC59DD /* foimages */ = {
 			isa = PBXGroup;
 			children = (
+				84F7C7D12236717800D55C78 /* shaoxiang_xm.jpg */,
 				3D8AFA6D2232AB8900FC59DD /* 19-1312141F402255.jpg */,
 				3D8AFA6E2232AB8900FC59DD /* fo_bg_bl.jpg */,
 				3D8AFA6F2232AB8900FC59DD /* 19-1312141F535N2.jpg */,
@@ -1164,6 +1167,7 @@
 				3D8AFA972232AB8A00FC59DD /* 19-1312141FP92S.jpg in Resources */,
 				3D5350D922058A2700594F6E /* login_bg@2x.png in Resources */,
 				3D8AFAAF2232AB8A00FC59DD /* fo_bg_tl.jpg in Resources */,
+				84F7C7D22236717800D55C78 /* shaoxiang_xm.jpg in Resources */,
 				3D5350E822058A2800594F6E /* bg_3.jpg in Resources */,
 				3D5350D422058A2700594F6E /* tab1.png in Resources */,
 				3D8AFAAA2232AB8A00FC59DD /* fo_bg_br.jpg in Resources */,

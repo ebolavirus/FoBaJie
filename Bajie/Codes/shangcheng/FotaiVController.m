@@ -20,11 +20,16 @@
 @property(nonatomic,strong) UIImageView *RDImageView;
 @property(nonatomic,strong) UIImageView *FlowerImageView;
 
+@property(nonatomic,strong) UIImageView *VoterBgImageView;
+@property(nonatomic,strong) UILabel *VoterNameLabel;
+
 @end
 
 @implementation FotaiVController
 
-- (id)initWithFoID:(int)aFoID andXiangID:(int)aXiangID
+- (id)initWithFoID:(int)aFoID
+        andXiangID:(int)aXiangID
+      andVoterName:(NSString*)voterName
 {
 	self = [super init];
 	if (self) {
@@ -72,6 +77,18 @@
 		self.FlowerImageView.image = [UIImage imageNamed:@"fo_gp_flower.gif"];
 		self.FlowerImageView.frame = CGRectMake(kunit * 224/566, kunit * 309/566, kunit * 118/566, kunit * 159/566);
 		[self.view addSubview:self.FlowerImageView];
+        
+        self.VoterBgImageView = [UIImageView new];
+        self.VoterBgImageView.image = [UIImage imageNamed:@"shaoxiang_xm.jpg"];
+        self.VoterBgImageView.frame = CGRectMake(kunit / 6, kunit * 421/ 566, kunit * 2/3, kunit / 18);
+        [self.view addSubview:self.VoterBgImageView];
+        
+        self.VoterNameLabel = [UILabel new];
+        self.VoterNameLabel.text = @"烧香人: 埃博拉病毒埃博拉病毒";
+        self.VoterNameLabel.textAlignment = NSTextAlignmentCenter;
+        self.VoterNameLabel.font = [UIFont flatFontOfSize:kunit/25];
+        self.VoterNameLabel.frame = self.VoterBgImageView.frame;
+        [self.view addSubview:self.VoterNameLabel];
 	}
 	return self;
 }
@@ -178,6 +195,21 @@
             return @"19-1312141G43DV.jpg";
         default:
             return @"fo_fx_ysf.jpg";
+    }
+}
+
+- (NSString*)getPicNameByXiangName:(int)aFoID {
+    switch (aFoID) {
+        case 0: //药师佛
+            return @"fo_gp_flower.gif";
+        case 1: //释迦牟尼佛
+            return @"3-131214154509137.jpg";
+        case 2: //阿弥陀佛
+            return @"19-13121416204VY.jpg";
+        case 3: //普贤菩萨
+            return @"19-131214162P0111.jpg";
+        default:
+            return @"fo_gp_flower.gif";
     }
 }
 
