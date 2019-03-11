@@ -20,45 +20,55 @@
 	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 	if (self) {
 		// configure control(s)
-		self.bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, 70)];
-		self.bgImgView.image = [UIImage imageNamed:@"bg_0.jpg"];
+		self.bgImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kDeviceWidth, 140)];
+		self.bgImgView.image = [UIImage imageNamed:@"fo_bg.jpg"];
 		[self.bgImgView setContentMode:UIViewContentModeScaleToFill];
 		[self addSubview:self.bgImgView];
 		
-		self.tagImgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 50)];
-		self.tagImgView.image = [UIImage imageNamed:@"bookmark"];
-		[self.tagImgView setContentMode:UIViewContentModeScaleToFill];
-		[self addSubview:self.tagImgView];
+		self.foImgView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 96, 120)];
+		self.foImgView.image = [UIImage imageNamed:@"3-131214154509137.jpg"];
+		[self.foImgView setContentMode:UIViewContentModeScaleToFill];
+		[self addSubview:self.foImgView];
 		
-		self.numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 200, 15)];
+		self.numberLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 10, kDeviceWidth - 120, 15)];
 		self.numberLabel.textColor = [UIColor darkGrayColor];
 		self.numberLabel.textAlignment = NSTextAlignmentLeft;
 		self.numberLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
 		[self addSubview:self.numberLabel];
 		
-		self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 25, 250, 20)];
+		self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 25, kDeviceWidth - 120, 15)];
+		self.nameLabel.textColor = [UIColor darkGrayColor];
+		self.nameLabel.textAlignment = NSTextAlignmentLeft;
+		self.nameLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
+		[self addSubview:self.nameLabel];
+		
+		self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 40, kDeviceWidth - 120, 20)];
+		self.titleLabel.textColor = [UIColor blackColor];
+		self.titleLabel.textAlignment = NSTextAlignmentLeft;
+		self.titleLabel.font = [UIFont fontWithName:@"Arial" size:14.0f];
+		self.titleLabel.numberOfLines = 1;
+		self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+		[self addSubview:self.titleLabel];
+		
+		self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 60, kDeviceWidth - 120, 50)];
 		self.mainLabel.textColor = [UIColor blackColor];
 		self.mainLabel.textAlignment = NSTextAlignmentLeft;
-		self.mainLabel.font = [UIFont fontWithName:@"Arial" size:16.0f];
+		self.mainLabel.font = [UIFont fontWithName:@"Arial" size:14.0f];
+		self.mainLabel.numberOfLines = 3;
+		self.mainLabel.lineBreakMode = NSLineBreakByTruncatingTail;
 		[self addSubview:self.mainLabel];
 		
-		self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 45, 200, 15)];
+		self.dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 110, kDeviceWidth - 120, 20)];
 		self.dateLabel.textColor = [UIColor darkGrayColor];
 		self.dateLabel.textAlignment = NSTextAlignmentLeft;
 		self.dateLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
 		[self addSubview:self.dateLabel];
 		
-		self.moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(kDeviceWidth - 100, 10, 90, 15)];
+		self.moneyLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 110, kDeviceWidth - 120, 20)];
 		self.moneyLabel.textColor = [UIColor darkGrayColor];
 		self.moneyLabel.textAlignment = NSTextAlignmentRight;
 		self.moneyLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
 		[self addSubview:self.moneyLabel];
-		
-		self.praiseLabel = [[UILabel alloc] initWithFrame:CGRectMake(kDeviceWidth - 100, 25, 90, 15)];
-		self.praiseLabel.textColor = [UIColor darkGrayColor];
-		self.praiseLabel.textAlignment = NSTextAlignmentRight;
-		self.praiseLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
-		[self addSubview:self.praiseLabel];
 	}
 	return self;
 }

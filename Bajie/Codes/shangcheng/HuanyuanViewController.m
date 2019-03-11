@@ -65,7 +65,8 @@
 		self.listView.backgroundColor = [UIColor clearColor];
 		self.listView.dataSource = self;
 		self.listView.delegate = self;
-		self.listView.separatorStyle = UITableViewCellSeparatorStyleNone;
+		self.listView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+		self.listView.separatorColor = [UIColor blackColor];
 		
 		self.listheader = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 			// 进入刷新状态后会自动调用这个block
@@ -116,9 +117,8 @@
 	AVQuery *query = [AVQuery queryWithClassName:@"WishTree"];
 	query.limit = self.pageEleCount;
 	query.skip = self.nowPage * self.pageEleCount;
-	[query orderByDescending:@"wishdate"];
+	[query orderByDescending:@"wishid"];
 	if(self.mySegment.selectedSegmentIndex == 0){
-		[query whereKey:@"hidden" equalTo:@(NO)];
 	}else if(self.mySegment.selectedSegmentIndex == 1){
 		AVUser *currentUser = [AVUser currentUser];
 		[query whereKey:@"username" equalTo:currentUser[@"username"]];
@@ -211,7 +211,7 @@
 #pragma mark - Table view data source
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 70.0f;
+	return 140.0f;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -242,16 +242,13 @@
 	//NSDate转NSString
 	NSString *currentDateString = [dateFormatter stringFromDate:date];
 	// Just want to test, so I hardcode the data
-	cell.mainLabel.text = [NSString stringWithFormat:@"%@_%@%@",item[@"bigwish"],item[@"smallwish"],([item[@"hidden"] boolValue] == YES?@"（私密）":@"")];
-	if ([item[@"anonymous"] boolValue] == YES) {
-		cell.dateLabel.text = [NSString stringWithFormat:@"%@ 匿名",currentDateString];
-	}else{
-		cell.dateLabel.text = [NSString stringWithFormat:@"%@ %@",currentDateString,[item[@"nickname"] length] > 0 ?item[@"nickname"]:item[@"username"]];
-	}
-	cell.numberLabel.text = [NSString stringWithFormat:@"No.%08d",[item[@"wishid"] intValue]];
+	cell.foImgView.image = [UIImage imageNamed:@"19-1312141F535N2.jpg"];
+	cell.numberLabel.text = [NSString stringWithFormat:@"第%08d个烧香人",[item[@"wishid"] intValue]];
+	cell.nameLabel.text = item[@"username"];
+	cell.titleLabel.text = item[@"title"];
+	cell.mainLabel.text = item[@"content"];
+	cell.dateLabel.text = currentDateString;
 	cell.moneyLabel.text = [item[@"gold"] intValue] == 0?@"":[NSString stringWithFormat:@"㉤%d",[item[@"gold"] intValue]];
-	cell.praiseLabel.text = [item[@"wishcount"] intValue] == 0?@"":[NSString stringWithFormat:@"♡ %d",[item[@"wishcount"] intValue]];
-	[cell.bgImgView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%d.jpg",[item[@"luck_no"] intValue]]]];
 	return cell;
 }
 

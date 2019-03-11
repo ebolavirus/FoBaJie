@@ -14,9 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 // now only showing one label, you can add more yourself
 @property (nonatomic, strong) UIImageView *bgImgView;
-@property (nonatomic, strong) UIImageView *tagImgView;
-@property (nonatomic, strong) UILabel *mainLabel;
+@property (nonatomic, strong) UIImageView *foImgView;
 @property (nonatomic, strong) UILabel *numberLabel;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *mainLabel;
 @property (nonatomic, strong) UILabel *dateLabel;
 @property (nonatomic, strong) UILabel *moneyLabel;
 @property (nonatomic, strong) UILabel *praiseLabel;
