@@ -14,9 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id)initWithFoID:(int)aFoID andXiangID:(int)aXiangID;
 
--(void)setFoID:(int)aFoID;
--(void)setXiangAction:(int)aXiangID;
-
 @end
 
 NS_ASSUME_NONNULL_END

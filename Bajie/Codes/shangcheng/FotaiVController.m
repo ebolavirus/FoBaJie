@@ -54,7 +54,7 @@
 		[self.view addSubview:self.RFireImageView];
 		
 		self.FoImageView = [UIImageView new];
-		self.FoImageView.image = [UIImage imageNamed:@"fo_fx_ysf.jpg"];
+		self.FoImageView.image = [UIImage imageNamed:[self getPicNameByFoName:10]];
 		self.FoImageView.frame = CGRectMake(kunit * 159/566, 0, kunit * 248/566, kunit * 309/566);
 		[self.view addSubview:self.FoImageView];
 		
@@ -126,14 +126,64 @@
 	[super viewWillAppear:animated];
 }
 
+- (NSString*)getPicNameByFoName:(int)aFoID {
+    switch (aFoID) {
+        case 0: //药师佛
+            return @"fo_fx_ysf.jpg";
+        case 1: //释迦牟尼佛
+            return @"3-131214154509137.jpg";
+        case 2: //阿弥陀佛
+            return @"19-13121416204VY.jpg";
+        case 3: //普贤菩萨
+            return @"19-131214162P0111.jpg";
+        case 4: //文殊师利菩萨
+            return @"19-131214162925U5.jpg";
+        case 5: //观世音菩萨
+            return @"19-1312141630344c.jpg";
+        case 6: //地藏王菩萨
+            return @"19-131214163130R9.jpg";
+        case 7: //弥勒尊佛
+            return @"19-131214163315C9.jpg";
+        case 8: //准提菩萨
+            return @"19-1312141634261L.jpg";
+        case 9: //大势至菩萨
+            return @"19-131214163549392.jpg";
+        case 10: //南无离怖如来
+            return @"19-1312141F213157.jpg";
+        case 11: //南无金色宝光妙行成就如来
+            return @"19-1312141F402255.jpg";
+        case 12: //南无拘那含牟尼佛
+            return @"19-1312141F535N2.jpg";
+        case 13: //南无甘露王如来
+            return @"19-1312141F6162a.jpg";
+        case 14: //南无广博身如来
+            return @"19-1312141FH0224.jpg";
+        case 15: //南无法海雷音如来
+            return @"19-1312141FP92S.jpg";
+        case 16: //南无宝月智严光音自在如来
+            return @"19-1312141FUN45.jpg";
+        case 17: //宝胜如来
+            return @"19-1312141F9433a.jpg";
+        case 18: //拘留孙佛
+            return @"19-1312141G034S9.jpg";
+        case 19: //韦驮菩萨
+            return @"19-1312141G11H54.jpg";
+        case 20: //毗卢遮那佛
+            return @"19-1312141G2041L.jpg";
+        case 21: //婆罗利胜头羯罗夜
+            return @"19-1312141G243159.jpg";
+        case 22: //南无无忧最胜吉祥如来
+            return @"19-1312141G344J9.jpg";
+        case 23: //南无尸弃佛
+            return @"19-1312141G43DV.jpg";
+        default:
+            return @"fo_fx_ysf.jpg";
+    }
+}
+
+
 /*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
 */
 
 @end
