@@ -17,7 +17,6 @@
 
 @property(nonatomic,strong) UIImageView *bgView;
 @property(nonatomic,strong) UITableView *tableView;
-@property(nonatomic,strong) FUIButton *logoutButton;
 
 @end
 
@@ -54,25 +53,13 @@
         make.right.mas_equalTo(ws.view.mas_right);
         make.top.mas_equalTo(ws.view.mas_top);
     }];
-    [self.logoutButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(ws.view).with.offset(20);
-        make.right.mas_equalTo(ws.view).with.offset(-20);
-        make.bottom.mas_equalTo(ws.view.mas_bottom).with.offset(-10);
-        make.height.mas_equalTo(40);
-    }];
     
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(ws.view.mas_left);
         make.right.mas_equalTo(ws.view.mas_right);
         make.top.mas_equalTo(self.bgView.mas_bottom);
-        make.bottom.mas_equalTo(self.logoutButton.mas_top).with.offset(-10);
+        make.bottom.mas_equalTo(self.view);
     }];
-    AVUser *currentUser = [AVUser currentUser];
-    if (currentUser != nil) {
-        [self.logoutButton setTitle:@"注销" forState:UIControlStateNormal];
-    } else {
-        [self.logoutButton setTitle:@"登录" forState:UIControlStateNormal];
-    }
     [self.tableView reloadData];
 }
 

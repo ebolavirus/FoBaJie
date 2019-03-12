@@ -33,7 +33,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.cacheUserItem = [APPALL.myUserItem copy];
+        self.cacheUserItem = APPALL.myUserItem;
         
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
