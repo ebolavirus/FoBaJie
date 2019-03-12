@@ -21,7 +21,6 @@
 @property(nonatomic,strong) UILabel *userLabel;
 @property(nonatomic,strong) UILabel *dateLabel;
 @property(nonatomic,strong) UILabel *moneyLabel;
-@property(nonatomic,strong) FUIButton *jyButton;
 @property(nonatomic,strong) FUIButton *xyButton;
 
 @end
@@ -70,17 +69,6 @@
 		self.contentField.selectable = NO;
 		[self.view addSubview:self.contentField];
 		
-		self.jyButton = [FUIButton new];
-		self.jyButton.buttonColor = MMColorRed;
-		self.jyButton.shadowColor = MMColorShadowRed;
-		self.jyButton.shadowHeight = 3.0f;
-		self.jyButton.cornerRadius = 6.0f;
-		self.jyButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-		[self.jyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-		[self.jyButton setTitle:@"加油" forState:UIControlStateNormal];
-		[self.jyButton addTarget:self action:@selector(jyPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:self.jyButton];
-		
 		self.xyButton = [FUIButton new];
 		self.xyButton.buttonColor = MMColorRed;
 		self.xyButton.shadowColor = MMColorShadowRed;
@@ -113,12 +101,7 @@
 	}else{
 		self.userLabel.text = [self.myWish[@"nickname"] length] > 0 ?self.myWish[@"nickname"]:self.myWish[@"username"];
 	}
-	AVUser *currentUser = [AVUser currentUser];
-	if ([self.myWish[@"username"] isEqualToString:currentUser[@"username"]]) {
-		[self.jyButton setTitle:@"捐献" forState:UIControlStateNormal];
-	} else {
-		[self.jyButton setTitle:@"祝福ta" forState:UIControlStateNormal];
-	}
+	
 	NSDate *date = (NSDate*)self.myWish.createdAt;
 	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
 	[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -149,13 +132,6 @@
 	[self.xyButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(ws.view.mas_centerX).with.offset(2);
 		make.right.mas_equalTo(self.titleLabel.mas_right);
-		make.bottom.mas_equalTo(ws.view).with.offset(-10);
-		make.height.mas_equalTo(40);
-	}];
-	
-	[self.jyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(self.titleLabel.mas_left);
-		make.right.mas_equalTo(ws.view.mas_centerX).with.offset(-2);
 		make.bottom.mas_equalTo(ws.view).with.offset(-10);
 		make.height.mas_equalTo(40);
 	}];
@@ -195,52 +171,6 @@
 
 -(void)xyPressed:(id)sender{
 	[APPALL.myKGModal hideAnimated:YES];
-}
-
--(void)jyPressed:(id)sender{
-	[APPALL.myKGModal hideAnimated:YES];
-	if ([self.myWish[@"username"] isEqualToString:[AVUser currentUser][@"username"]]) {
-		// 编辑
-		[self.delegate ydClickIndex:1];
-	} else {
-		// 祝福他人
-		// [self.delegate ydClickIndex:2];
-		NSDate *date = (NSDate*)([AVUser currentUser][@"wishAt"]);
-		NSLog(@"wishAtTime:%@",date);
-		BOOL isToday = [[NSCalendar currentCalendar] isDateInToday:date];
-		if (isToday) {
-			UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"无法祝福" message:@"您一天仅可以免费祝福他人一次。" preferredStyle:UIAlertControllerStyleAlert];
-			UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-			}];
-			[vc addAction:cancelAction];
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[self presentViewController:vc animated:YES completion:nil];
-			});
-		} else {
-			NSDate *wishDate = (NSDate*)(self.myWish[@"wishdate"]);
-			NSDate *saveDate = [wishDate dateByAddingTimeInterval:86400];
-			[self.myWish setObject:saveDate forKey:@"wishdate"];
-			[self.myWish incrementKey:@"wishcount"];
-			[self.myWish saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-				if(succeeded){
-					UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"祝福成功！" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-					UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-						AVUser *user = [AVUser currentUser];
-    					[user setObject:[NSDate date] forKey:@"wishAt"];
-    					[user saveInBackground];
-						[APPALL.myKGModal hideAnimated:YES];
-						[self.delegate ydClickIndex:2];
-					}];
-					[vc addAction:cancelAction];
-					dispatch_async(dispatch_get_main_queue(), ^{
-						[self presentViewController:vc animated:YES completion:nil];
-					});
-				}else{
-					[SVProgressHUD showErrorWithStatus:@"祝福失败，可能是网络问题。"];
-				}
-			}];
-		}
-	}
 }
 
 @end

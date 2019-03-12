@@ -90,7 +90,7 @@
 		self.moneyLabel = [UILabel new];
 		self.moneyLabel.numberOfLines = 0;
 		self.moneyLabel.font = [UIFont boldFlatFontOfSize:16];
-		self.moneyLabel.text = [NSString stringWithFormat:@"为让愿望更快实现，我愿捐献：\n供奉佛前油灯。\n(捐献越多，您的许愿在许愿树中越靠前。)\n  ————%@",[tooles getnickname]];
+		self.moneyLabel.text = [NSString stringWithFormat:@"为让愿望更快实现，我愿捐献：\n供奉佛前油灯。\n(捐献越多，您的许愿在许愿树中越靠前。)\n  ————%@",APPALL.myUserItem.username];
 		[self.view addSubview:self.moneyLabel];
 		
 		self.moneyButton = [UIButton new];

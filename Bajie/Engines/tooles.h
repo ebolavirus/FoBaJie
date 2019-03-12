@@ -27,8 +27,8 @@ typedef enum
 +(NSString*)getLabelFromIndex:(NSInteger)aIndex;
 
 +(BOOL)verifyInputs:(NSString*)aStr forInputType:(EInputType)aType;
-+(NSString*)getnickname;
 +(NSString*)getErrorString:(NSInteger)aCode;
-+(void)addHonor:(NSString*)aHonor;
+
++(NSString*)getPicNameByFoName:(NSString*)aFoName;
 
 @end

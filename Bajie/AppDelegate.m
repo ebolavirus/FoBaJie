@@ -67,9 +67,6 @@
 	self.window.rootViewController = nav;
 	[self.window makeKeyAndVisible];
 	
-	AVUser *currentUser = [AVUser currentUser];
-    
-	
 	return YES;
 }
 

@@ -163,15 +163,15 @@
 - (NSString*)getPicNameByXiangName:(int)aFoID {
 	switch (aFoID) {
 		case 0: //药师佛
-			return @"fo_gp_flower.gif";
+			return @"fo_gp_xiang.gif";
 		case 1: //释迦牟尼佛
-			return @"3-131214154509137.jpg";
-		case 2: //阿弥陀佛
-			return @"19-13121416204VY.jpg";
-		case 3: //普贤菩萨
-			return @"19-131214162P0111.jpg";
-		default:
 			return @"fo_gp_flower.gif";
+		case 2: //阿弥陀佛
+			return @"fo_gp_fruit.gif";
+		case 3: //普贤菩萨
+			return @"fo_gp_water.gif";
+		default:
+			return @"fo_gp_xiang.gif";
 	}
 }
 

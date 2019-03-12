@@ -281,7 +281,7 @@
 
 - (void)VCIAPSucceed:(NSString*)aSucc{
 	[SVProgressHUD dismiss];
-	[tooles addHonor:self.moneytext];
+//	[tooles addHonor:self.moneytext];
 	UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"有求必应" message:@"捐献功德成功。\n愿施主功德圆满，前途无量！\n南无阿弥陀佛！" preferredStyle:UIAlertControllerStyleAlert];
 	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:nil];
 	[vc addAction:cancelAction];

@@ -223,7 +223,7 @@
 	//NSDate转NSString
 	NSString *currentDateString = [dateFormatter stringFromDate:date];
 	// Just want to test, so I hardcode the data
-	cell.foImgView.image = [UIImage imageNamed:@"19-1312141F535N2.jpg"];
+	cell.foImgView.image = [UIImage imageNamed:[tooles getPicNameByFoName:item[@"foname"]]];
 	cell.numberLabel.text = [NSString stringWithFormat:@"第%08d个烧香人",[item[@"wishid"] intValue]];
 	cell.nameLabel.text = item[@"username"];
 	cell.titleLabel.text = item[@"title"];
