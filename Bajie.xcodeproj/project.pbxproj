@@ -40,9 +40,6 @@
 		3D5350BD22058A2700594F6E /* XYBGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504622058A2600594F6E /* XYBGViewController.m */; };
 		3D5350BE22058A2700594F6E /* YwEditVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504822058A2600594F6E /* YwEditVController.m */; };
 		3D5350BF22058A2700594F6E /* YuanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504A22058A2600594F6E /* YuanDetailViewController.m */; };
-		3D5350C022058A2700594F6E /* Register1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504E22058A2600594F6E /* Register1ViewController.m */; };
-		3D5350C122058A2700594F6E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53505022058A2600594F6E /* LoginViewController.m */; };
-		3D5350C222058A2700594F6E /* ForgetPWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53505122058A2600594F6E /* ForgetPWViewController.m */; };
 		3D5350C322058A2700594F6E /* GuanyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53505522058A2600594F6E /* GuanyuViewController.m */; };
 		3D5350C422058A2700594F6E /* WodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53505922058A2600594F6E /* WodeViewController.m */; };
 		3D5350C522058A2700594F6E /* UserDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53505A22058A2600594F6E /* UserDataViewController.m */; };
@@ -187,6 +184,7 @@
 		3D9534BF22194EC1000E53EC /* pulldown.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534A922194EC1000E53EC /* pulldown.png */; };
 		3D9534C022194EC1000E53EC /* list_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534AA22194EC1000E53EC /* list_selected@2x.png */; };
 		3D9534C122194EC1000E53EC /* pullup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534AB22194EC1000E53EC /* pullup.png */; };
+		847DC9652237A22C00EB3B52 /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DC9642237A22C00EB3B52 /* UserInfoItem.m */; };
 		84F7C7D22236717800D55C78 /* shaoxiang_xm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84F7C7D12236717800D55C78 /* shaoxiang_xm.jpg */; };
 		CD419379880B2377A6FC20BB /* libPods-Bajie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */; };
 /* End PBXBuildFile section */
@@ -256,12 +254,6 @@
 		3D53504A22058A2600594F6E /* YuanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuanDetailViewController.m; sourceTree = "<group>"; };
 		3D53504B22058A2600594F6E /* HuanyuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuanyuanViewController.h; sourceTree = "<group>"; };
 		3D53504C22058A2600594F6E /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		3D53504E22058A2600594F6E /* Register1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Register1ViewController.m; sourceTree = "<group>"; };
-		3D53504F22058A2600594F6E /* ForgetPWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPWViewController.h; sourceTree = "<group>"; };
-		3D53505022058A2600594F6E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		3D53505122058A2600594F6E /* ForgetPWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPWViewController.m; sourceTree = "<group>"; };
-		3D53505222058A2600594F6E /* Register1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Register1ViewController.h; sourceTree = "<group>"; };
-		3D53505322058A2600594F6E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		3D53505522058A2600594F6E /* GuanyuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuanyuViewController.m; sourceTree = "<group>"; };
 		3D53505622058A2600594F6E /* UserDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataViewController.h; sourceTree = "<group>"; };
 		3D53505722058A2600594F6E /* WodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WodeViewController.h; sourceTree = "<group>"; };
@@ -433,6 +425,8 @@
 		3D9534AB22194EC1000E53EC /* pullup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pullup.png; sourceTree = "<group>"; };
 		4DD2E4A7F8E03376FE5517B1 /* Pods-Bajie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bajie.release.xcconfig"; path = "Target Support Files/Pods-Bajie/Pods-Bajie.release.xcconfig"; sourceTree = "<group>"; };
 		74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bajie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		847DC9632237A22C00EB3B52 /* UserInfoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
+		847DC9642237A22C00EB3B52 /* UserInfoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoItem.m; sourceTree = "<group>"; };
 		84F7C7D12236717800D55C78 /* shaoxiang_xm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shaoxiang_xm.jpg; sourceTree = "<group>"; };
 		C75C5ACDAA072B438F12CA3B /* Pods-Bajie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bajie.debug.xcconfig"; path = "Target Support Files/Pods-Bajie/Pods-Bajie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -507,6 +501,8 @@
 			children = (
 				3D534FF92205895400594F6E /* LocalItem.m */,
 				3D534FFA2205895400594F6E /* LocalItem.h */,
+				847DC9632237A22C00EB3B52 /* UserInfoItem.h */,
+				847DC9642237A22C00EB3B52 /* UserInfoItem.m */,
 			);
 			path = DBItems;
 			sourceTree = "<group>";
@@ -590,7 +586,6 @@
 			isa = PBXGroup;
 			children = (
 				3D53503922058A2600594F6E /* duanlian */,
-				3D53504D22058A2600594F6E /* Login */,
 				3D53504C22058A2600594F6E /* RootViewController.h */,
 				3D53503822058A2600594F6E /* RootViewController.m */,
 				3D53503F22058A2600594F6E /* shangcheng */,
@@ -632,28 +627,15 @@
 			path = shangcheng;
 			sourceTree = "<group>";
 		};
-		3D53504D22058A2600594F6E /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				3D53504F22058A2600594F6E /* ForgetPWViewController.h */,
-				3D53505122058A2600594F6E /* ForgetPWViewController.m */,
-				3D53505322058A2600594F6E /* LoginViewController.h */,
-				3D53505022058A2600594F6E /* LoginViewController.m */,
-				3D53505222058A2600594F6E /* Register1ViewController.h */,
-				3D53504E22058A2600594F6E /* Register1ViewController.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 		3D53505422058A2600594F6E /* wode */ = {
 			isa = PBXGroup;
 			children = (
+				3D53505822058A2600594F6E /* GuanyuViewController.h */,
 				3D53505522058A2600594F6E /* GuanyuViewController.m */,
 				3D53505622058A2600594F6E /* UserDataViewController.h */,
-				3D53505722058A2600594F6E /* WodeViewController.h */,
-				3D53505822058A2600594F6E /* GuanyuViewController.h */,
-				3D53505922058A2600594F6E /* WodeViewController.m */,
 				3D53505A22058A2600594F6E /* UserDataViewController.m */,
+				3D53505722058A2600594F6E /* WodeViewController.h */,
+				3D53505922058A2600594F6E /* WodeViewController.m */,
 			);
 			path = wode;
 			sourceTree = "<group>";
@@ -1284,7 +1266,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9534B322194EC1000E53EC /* MMSingleFitlerView.m in Sources */,
-				3D5350C222058A2700594F6E /* ForgetPWViewController.m in Sources */,
 				3D5350322205895400594F6E /* MOFSToolbar.m in Sources */,
 				3D5350332205895400594F6E /* UIColor+Hex.m in Sources */,
 				3D9534B922194EC1000E53EC /* MMMultiFitlerView.m in Sources */,
@@ -1296,7 +1277,6 @@
 				3D5350BF22058A2700594F6E /* YuanDetailViewController.m in Sources */,
 				3D5350242205895400594F6E /* LocalItem.m in Sources */,
 				3D9534BE22194EC1000E53EC /* UIColor+ComboBoxExtension.m in Sources */,
-				3D5350C022058A2700594F6E /* Register1ViewController.m in Sources */,
 				3D9534AE22194EC1000E53EC /* MMItem.m in Sources */,
 				3D5350BD22058A2700594F6E /* XYBGViewController.m in Sources */,
 				3D5350312205895400594F6E /* MOFSAddressPickerView.m in Sources */,
@@ -1324,6 +1304,7 @@
 				3D5350252205895400594F6E /* XTCalculateHeight.m in Sources */,
 				3D5350272205895400594F6E /* XTAlertViewController.m in Sources */,
 				3D5350262205895400594F6E /* XTAlertStyleView.m in Sources */,
+				847DC9652237A22C00EB3B52 /* UserInfoItem.m in Sources */,
 				3D5350352205895400594F6E /* AFAudioRouter.m in Sources */,
 				3D9534BB22194EC1000E53EC /* MMDropDownBox.m in Sources */,
 				3D5350C422058A2700594F6E /* WodeViewController.m in Sources */,
@@ -1336,7 +1317,6 @@
 				3D5350BA22058A2700594F6E /* YWTableViewCell.m in Sources */,
 				3D9534AF22194EC1000E53EC /* MMCombinationItem.m in Sources */,
 				3D9534B822194EC1000E53EC /* MMLeftCell.m in Sources */,
-				3D5350C122058A2700594F6E /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

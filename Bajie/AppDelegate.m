@@ -9,14 +9,11 @@
 #import "AppDelegate.h"
 #import "SMMNav.h"
 #import "RootViewController.h"
-#import "LoginViewController.h"
 #import <SVProgressHUD.h>
 
 @interface AppDelegate ()<DNSInAppPurchaseManagerDelegate>
 
 @property(nonatomic,assign) BOOL enableIAP;
-@property(nonatomic,strong) LoginViewController *loginVC;
-@property(nonatomic,strong) SMMNav *loginNav;
 
 @end
 
@@ -48,15 +45,18 @@
 	
 	self.globalDBManager = [LKDBHelper getUsingLKDBHelper];
 	//[self.globalDBManager dropAllTable];//清空数据库
+    self.myUserItem = [UserInfoItem searchSingleWithWhere:nil orderBy:nil];
+    if(!self.myUserItem)
+    {
+        self.myUserItem = [[UserInfoItem alloc] init];
+        [self.myUserItem saveToDB];
+    }
 	self.myLocalItem = [LocalItem searchSingleWithWhere:nil orderBy:nil];
 	if(!self.myLocalItem)
 	{
 		self.myLocalItem = [[LocalItem alloc] init];
 		[self.myLocalItem saveToDB];
 	}
-	
-	self.loginVC = [LoginViewController new];
-	self.loginNav = [[SMMNav alloc] initWithRootViewController:self.loginVC];
 	
 	RootViewController *vc = [[RootViewController alloc] initWithNibName:@"RootViewController" bundle:nil];
 	vc.edgesForExtendedLayout = UIRectEdgeNone;
@@ -68,11 +68,7 @@
 	[self.window makeKeyAndVisible];
 	
 	AVUser *currentUser = [AVUser currentUser];
-	if (currentUser != nil) {
-		//[self showLoginWindow];
-	} else {
-		[self showLoginWindow];
-	}
+    
 	
 	return YES;
 }
@@ -212,16 +208,6 @@
 {
 	NSLog(@"--restore failed-- %@",errorMessage);
 	//  not used;
-}
-
--(void)dismissLoginWindow
-{
-	[self.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
--(void)showLoginWindow
-{
-	[self.window.rootViewController presentViewController:self.loginNav animated:YES completion:nil];
 }
 
 @end

@@ -10,6 +10,7 @@
 #import <KGModal.h>
 #import <SoundManager.h>
 #import "LocalItem.h"
+#import "UserInfoItem.h"
 #import <LKDBHelper.h>
 #import <AVOSCloud.h>
 #import <DNSInAppPurchaseManager.h>
@@ -59,13 +60,11 @@ static NSString * const kIAPXH_198 = @"xxiang_3";
 @property(nonatomic,strong) SoundManager *mySoundManager;
 
 @property(strong,nonatomic) LKDBHelper* globalDBManager;
-@property (strong, nonatomic) LocalItem *myLocalItem;
+@property(strong,nonatomic) UserInfoItem *myUserItem;
+@property(strong,nonatomic) LocalItem *myLocalItem;
 
 @property(nonatomic,assign) id<VCIAPDelegate> myIAPDelegate;
 -(void)startToIAP:(NSString*)aIAP;
-
--(void)dismissLoginWindow;
--(void)showLoginWindow;
 
 @end
 

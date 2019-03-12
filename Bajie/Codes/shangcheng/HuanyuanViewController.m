@@ -24,7 +24,6 @@
 @property(nonatomic,strong) NSArray *wishArray;
 @property(nonatomic,strong) UITableView *listView;
 @property(nonatomic,strong) UILabel *singleToolbar;
-@property(nonatomic,strong) UISegmentedControl *mySegment;
 @property(nonatomic,strong) FUIButton *xyButton;
 @property(nonatomic,strong) MJRefreshNormalHeader *listheader;
 @property(nonatomic,strong) MJRefreshAutoNormalFooter *listfooter;
@@ -53,13 +52,6 @@
 		self.singleToolbar = [UILabel new];
 		self.singleToolbar.backgroundColor = MMColorRed;
 		[self.view addSubview:self.singleToolbar];
-		
-		self.mySegment = [[UISegmentedControl alloc] initWithItems:@[@"众生忏悔",@"我的忏悔"]];
-		[self.mySegment setTintColor:[UIColor whiteColor]];
-		[self.mySegment setBackgroundColor:MMColorRed];
-		self.mySegment.selectedSegmentIndex = 0;
-		[self.mySegment addTarget:self action:@selector(segChanged:) forControlEvents:UIControlEventValueChanged];
-		[self.view addSubview:self.mySegment];
 		
 		self.listView = [UITableView new];
 		self.listView.backgroundColor = [UIColor clearColor];
@@ -118,11 +110,6 @@
 	query.limit = self.pageEleCount;
 	query.skip = self.nowPage * self.pageEleCount;
 	[query orderByDescending:@"wishid"];
-	if(self.mySegment.selectedSegmentIndex == 0){
-	}else if(self.mySegment.selectedSegmentIndex == 1){
-		AVUser *currentUser = [AVUser currentUser];
-		[query whereKey:@"username" equalTo:currentUser[@"username"]];
-	}
 	[SVProgressHUD showWithStatus:@"加载中..."];
 	[query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
 		if (!error) {
@@ -179,12 +166,6 @@
 		make.right.mas_equalTo(ws.view.mas_right);
 		make.top.mas_equalTo(ws.view.mas_top);
 		make.height.mas_equalTo(44);
-	}];
-	
-	[self.mySegment mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.edges.equalTo(self.singleToolbar).with.insets(UIEdgeInsetsMake(7,7,7,7));
-		make.centerX.equalTo(self.singleToolbar.mas_centerX);
-		make.centerY.equalTo(self.singleToolbar.mas_centerY);
 	}];
 	
 	[self.xyButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -259,8 +240,8 @@
 }
 
 -(void)xyPressed:(id)sender{
-	if(![tooles getnickname]){
-		UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"请先登录" message:@"许愿前，请在个人主页登录并完善您的个人信息。" preferredStyle:UIAlertControllerStyleAlert];
+    if(!APPALL.myUserItem.username.length){
+        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"请先完善您的个人信息" message:@"在向佛祖许愿前，请您在设置-编辑资料中完善您的个人资料。" preferredStyle:UIAlertControllerStyleAlert];
 		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
 		[vc addAction:cancelAction];
 		dispatch_async(dispatch_get_main_queue(), ^{

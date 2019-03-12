@@ -40,18 +40,6 @@
         self.tableView.dataSource = self;
         self.tableView.delegate = self;
         [self.view addSubview:self.tableView];
-        
-        self.logoutButton = [FUIButton new];
-        self.logoutButton.buttonColor = MMColorRed;
-        self.logoutButton.shadowColor = MMColorShadowRed;
-        self.logoutButton.shadowHeight = 3.0f;
-        self.logoutButton.cornerRadius = 6.0f;
-        self.logoutButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-        [self.logoutButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-        [self.logoutButton setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-        [self.logoutButton setTitle:@"注销" forState:UIControlStateNormal];
-        [self.logoutButton addTarget:self action:@selector(logoutPressed:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.logoutButton];
     }
     return self;
 }
@@ -86,25 +74,6 @@
         [self.logoutButton setTitle:@"登录" forState:UIControlStateNormal];
     }
     [self.tableView reloadData];
-}
-
--(void)logoutPressed:(id)sender{
-    AVUser *currentUser = [AVUser currentUser];
-    if (currentUser != nil) {
-        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"注销" message:@"确认退出登录吗？" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"返回" style:UIAlertActionStyleCancel handler:nil];
-        UIAlertAction *ok1Action = [UIAlertAction actionWithTitle:@"继续注销"style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            [AVUser logOut];
-            [APPALL showLoginWindow];
-        }];
-        [vc addAction:ok1Action];
-        [vc addAction:cancelAction];
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self presentViewController:vc animated:YES completion:nil];
-		});
-    } else {
-        [APPALL showLoginWindow];
-    }
 }
 
 - (void)viewDidLoad {
@@ -148,12 +117,10 @@
         case 0:
             switch (indexPath.row) {
                 case 0:{
-                    AVUser *currentUser = [AVUser currentUser];
-                    if (currentUser != nil) {
-                        cell.textLabel.text = currentUser.username;
-                        cell.detailTextLabel.text = @"编辑资料";
-                    }else{
-                        cell.textLabel.text = @"尚未登录";
+                    if(APPALL.myUserItem.username.length <= 0){
+                        cell.textLabel.text = @"尚未编辑资料";
+                    } else {
+                        cell.textLabel.text = APPALL.myUserItem.username;
                     }
                 }
                     break;
@@ -198,14 +165,9 @@
         case 0:
             switch (indexPath.row) {
                 case 0:{
-                    AVUser *currentUser = [AVUser currentUser];
-                    if (currentUser != nil) {
-                        UserDataViewController *vc = [[UserDataViewController alloc] initWithStyle:UITableViewStyleGrouped];
-                        vc.myDelegate = self;
-                        [self.navigationController pushViewController:vc animated:YES];
-                    }else{
-                        [APPALL showLoginWindow];
-                    }
+                    UserDataViewController *vc = [[UserDataViewController alloc] initWithStyle:UITableViewStyleGrouped];
+                    vc.myDelegate = self;
+                    [self.navigationController pushViewController:vc animated:YES];
                 }
                     break;
                 case 1:{
