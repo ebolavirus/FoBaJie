@@ -185,6 +185,8 @@
 		3D9534C022194EC1000E53EC /* list_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534AA22194EC1000E53EC /* list_selected@2x.png */; };
 		3D9534C122194EC1000E53EC /* pullup.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D9534AB22194EC1000E53EC /* pullup.png */; };
 		847DC9652237A22C00EB3B52 /* UserInfoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DC9642237A22C00EB3B52 /* UserInfoItem.m */; };
+		847DC96D2238FE9A00EB3B52 /* arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 847DC96A2238FE9A00EB3B52 /* arrow_up@2x.png */; };
+		847DC96E2238FE9A00EB3B52 /* HWDownSelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DC96B2238FE9A00EB3B52 /* HWDownSelectedView.m */; };
 		84F7C7D22236717800D55C78 /* shaoxiang_xm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84F7C7D12236717800D55C78 /* shaoxiang_xm.jpg */; };
 		CD419379880B2377A6FC20BB /* libPods-Bajie.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */; };
 /* End PBXBuildFile section */
@@ -427,6 +429,9 @@
 		74B8EE75CB0A9360AC9CA4B7 /* libPods-Bajie.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Bajie.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		847DC9632237A22C00EB3B52 /* UserInfoItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoItem.h; sourceTree = "<group>"; };
 		847DC9642237A22C00EB3B52 /* UserInfoItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfoItem.m; sourceTree = "<group>"; };
+		847DC96A2238FE9A00EB3B52 /* arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_up@2x.png"; sourceTree = "<group>"; };
+		847DC96B2238FE9A00EB3B52 /* HWDownSelectedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWDownSelectedView.m; sourceTree = "<group>"; };
+		847DC96C2238FE9A00EB3B52 /* HWDownSelectedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWDownSelectedView.h; sourceTree = "<group>"; };
 		84F7C7D12236717800D55C78 /* shaoxiang_xm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shaoxiang_xm.jpg; sourceTree = "<group>"; };
 		C75C5ACDAA072B438F12CA3B /* Pods-Bajie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bajie.debug.xcconfig"; path = "Target Support Files/Pods-Bajie/Pods-Bajie.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -482,6 +487,7 @@
 		3D534FF72205895400594F6E /* Engines */ = {
 			isa = PBXGroup;
 			children = (
+				847DC9682238FE9A00EB3B52 /* HWDownSelectedView */,
 				3D53501F2205895400594F6E /* AFSoundManager */,
 				3D534FF82205895400594F6E /* DBItems */,
 				3D95346E22194EC1000E53EC /* MMComboBox */,
@@ -999,6 +1005,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		847DC9682238FE9A00EB3B52 /* HWDownSelectedView */ = {
+			isa = PBXGroup;
+			children = (
+				847DC9692238FE9A00EB3B52 /* Resources */,
+				847DC96B2238FE9A00EB3B52 /* HWDownSelectedView.m */,
+				847DC96C2238FE9A00EB3B52 /* HWDownSelectedView.h */,
+			);
+			path = HWDownSelectedView;
+			sourceTree = "<group>";
+		};
+		847DC9692238FE9A00EB3B52 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				847DC96A2238FE9A00EB3B52 /* arrow_up@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		9EA3D671697289B1B130456B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1158,6 +1182,7 @@
 				3D5350D422058A2700594F6E /* tab1.png in Resources */,
 				3D8AFAAA2232AB8A00FC59DD /* fo_bg_br.jpg in Resources */,
 				3D53502F2205895400594F6E /* city.plist in Resources */,
+				847DC96D2238FE9A00EB3B52 /* arrow_up@2x.png in Resources */,
 				3D53510022058A2800594F6E /* stove.png in Resources */,
 				3D5350F222058A2800594F6E /* wishstate_iplok.png in Resources */,
 				3D8AFAAD2232AB8A00FC59DD /* 19-1312141G43DV.jpg in Resources */,
@@ -1281,6 +1306,7 @@
 				3D5350BD22058A2700594F6E /* XYBGViewController.m in Sources */,
 				3D5350312205895400594F6E /* MOFSAddressPickerView.m in Sources */,
 				3D9534B022194EC1000E53EC /* MMLayout.m in Sources */,
+				847DC96E2238FE9A00EB3B52 /* HWDownSelectedView.m in Sources */,
 				3D9534B122194EC1000E53EC /* MMAlternativeItem.m in Sources */,
 				3D5350362205895400594F6E /* AFSoundManager.m in Sources */,
 				3D5350B622058A2700594F6E /* RootViewController.m in Sources */,

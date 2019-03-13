@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (id)initWithFoID:(int)aFoID
         andXiangID:(int)aXiangID
-      andVoterName:(NSString*)voterName;
+      andVoterName:(NSString*)voterName
+          andKunit:(CGFloat)akunit;
 
 @end
 

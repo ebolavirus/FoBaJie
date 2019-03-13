@@ -169,7 +169,7 @@
                 case 0:{
                     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
                     NSString *version = [infoDictionary objectForKey:@"CFBundleShortVersionString"];//app版本号 Version
-                    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"关于软件" message:[NSString stringWithFormat:@"版本：%@\n版权所有：上海千沿网络科技有限公司",version] preferredStyle:UIAlertControllerStyleAlert];
+                    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"关于软件" message:[NSString stringWithFormat:@"版本：%@\n祈福网是专业从事在线烧香、烧香拜佛、网上拜佛、礼佛、网上许愿的大型专业虚拟现实祭祀软件。您可以在这里免费获取烧香图解、上香图解、观香图、如何看香谱等信息。\n版权所有：上海千沿网络科技有限公司",version] preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleCancel handler:nil];
                     [vc addAction:cancelAction];
 					dispatch_async(dispatch_get_main_queue(), ^{

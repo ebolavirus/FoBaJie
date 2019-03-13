@@ -30,5 +30,6 @@ typedef enum
 +(NSString*)getErrorString:(NSInteger)aCode;
 
 +(NSString*)getPicNameByFoName:(NSString*)aFoName;
++(NSString*)getXiangPicNameByXiangID:(int)aXiangID;
 
 @end

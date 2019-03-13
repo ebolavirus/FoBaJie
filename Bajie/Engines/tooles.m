@@ -197,4 +197,20 @@
 	}
 }
 
+
++(NSString*)getXiangPicNameByXiangID:(int)aXiangID {
+    switch (aXiangID) {
+        case 0: // xiang
+            return @"fo_gp_xiang.gif";
+        case 1: // hua
+            return @"fo_gp_flower.gif";
+        case 2: // guo
+            return @"fo_gp_fruit.gif";
+        case 3: // shui
+            return @"fo_gp_water.gif";
+        default:
+            return @"fo_gp_xiang.gif";
+    }
+}
+
 @end

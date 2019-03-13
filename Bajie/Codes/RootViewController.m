@@ -17,7 +17,6 @@
 @interface RootViewController ()
 
 @property(nonatomic,assign) int musicIndex;
-@property(nonatomic,strong) UIBarButtonItem *helpButton;
 
 @end
 
@@ -30,12 +29,12 @@
 		self.edgesForExtendedLayout = UIRectEdgeNone;
 		//b.创建子控制器
 		ShangxiangViewController *c1=[ShangxiangViewController new];
-		c1.tabBarItem.title=@"礼佛";
+		c1.tabBarItem.title=@"礼佛堂";
 		c1.tabBarItem.tag = 1;
 		c1.tabBarItem.image=[UIImage imageNamed:@"tab1"];
 		
 		HuanyuanViewController *c4=[HuanyuanViewController new];
-		c4.tabBarItem.title=@"忏悔堂";
+		c4.tabBarItem.title=@"在线祈福";
 		c4.tabBarItem.tag = 2;
 		c4.tabBarItem.image=[UIImage imageNamed:@"tab4"];
 		
@@ -51,9 +50,6 @@
 		[self.tabBar configureFlatTabBarWithColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor]];
 //		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"音乐:关" style:UIBarButtonItemStylePlain target:self action:@selector(theMusic:)];
 		
-		self.helpButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"help_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(theHelp:)];
-		self.navigationItem.leftBarButtonItem = self.helpButton;
-		
 		self.musicIndex = arc4random() % 5 + 1;
 	}
 	return self;
@@ -61,7 +57,7 @@
 
 -(void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
 	self.title = item.title;
-	self.navigationItem.leftBarButtonItem = (item.tag == 2)?self.helpButton:nil;
+//    self.navigationItem.leftBarButtonItem = (item.tag == 2)?self.helpButton:nil;
 }
 
 - (void)viewDidLoad {
@@ -82,16 +78,6 @@
 		self.musicIndex = arc4random() % 5 + 1;
 		[self playMusic];
 	}
-}
-
--(void)theHelp:(id)sender {
-	NSString *helpStr = @"忏悔堂排名规则如下：\n1.基本规则：越新的忏悔在忏悔堂中越靠前；\n2.基于基本规则，有两种方式可以让忏悔在整体排名中向前提升：捐献和他人祝福；\n3.捐献的金额会产生排名提升值，1元为1天；且一条忏悔因捐献而提升名次后，无法进行第二次捐献；\n4.他人祝福的提升值为1次=1天，但是不能自己给自己祝福；且每个人每天祝福他人的次数仅一次。";
-	UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"排名规则" message:helpStr preferredStyle:UIAlertControllerStyleAlert];
-	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleCancel handler:nil];
-	[vc addAction:cancelAction];
-	dispatch_async(dispatch_get_main_queue(), ^{
-		[self presentViewController:vc animated:YES completion:nil];
-	});
 }
 
 -(void)playMusic
