@@ -37,8 +37,6 @@
 		3D5350BA22058A2700594F6E /* YWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504122058A2600594F6E /* YWTableViewCell.m */; };
 		3D5350BB22058A2700594F6E /* YuanwangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504322058A2600594F6E /* YuanwangViewController.m */; };
 		3D5350BC22058A2700594F6E /* HuanyuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504422058A2600594F6E /* HuanyuanViewController.m */; };
-		3D5350BD22058A2700594F6E /* XYBGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504622058A2600594F6E /* XYBGViewController.m */; };
-		3D5350BE22058A2700594F6E /* YwEditVController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504822058A2600594F6E /* YwEditVController.m */; };
 		3D5350BF22058A2700594F6E /* YuanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53504A22058A2600594F6E /* YuanDetailViewController.m */; };
 		3D5350C322058A2700594F6E /* GuanyuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53505522058A2600594F6E /* GuanyuViewController.m */; };
 		3D5350C422058A2700594F6E /* WodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D53505922058A2600594F6E /* WodeViewController.m */; };
@@ -243,15 +241,11 @@
 		3D53503C22058A2600594F6E /* ShangxiangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShangxiangViewController.m; sourceTree = "<group>"; };
 		3D53503D22058A2600594F6E /* XianghuoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XianghuoViewController.m; sourceTree = "<group>"; };
 		3D53503E22058A2600594F6E /* ShangxiangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShangxiangViewController.h; sourceTree = "<group>"; };
-		3D53504022058A2600594F6E /* YwEditVController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YwEditVController.h; sourceTree = "<group>"; };
 		3D53504122058A2600594F6E /* YWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YWTableViewCell.m; sourceTree = "<group>"; };
-		3D53504222058A2600594F6E /* XYBGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYBGViewController.h; sourceTree = "<group>"; };
 		3D53504322058A2600594F6E /* YuanwangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuanwangViewController.m; sourceTree = "<group>"; };
 		3D53504422058A2600594F6E /* HuanyuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HuanyuanViewController.m; sourceTree = "<group>"; };
 		3D53504522058A2600594F6E /* YuanDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuanDetailViewController.h; sourceTree = "<group>"; };
-		3D53504622058A2600594F6E /* XYBGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYBGViewController.m; sourceTree = "<group>"; };
 		3D53504722058A2600594F6E /* YWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YWTableViewCell.h; sourceTree = "<group>"; };
-		3D53504822058A2600594F6E /* YwEditVController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YwEditVController.m; sourceTree = "<group>"; };
 		3D53504922058A2600594F6E /* YuanwangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuanwangViewController.h; sourceTree = "<group>"; };
 		3D53504A22058A2600594F6E /* YuanDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuanDetailViewController.m; sourceTree = "<group>"; };
 		3D53504B22058A2600594F6E /* HuanyuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HuanyuanViewController.h; sourceTree = "<group>"; };
@@ -617,14 +611,10 @@
 			children = (
 				3D53504B22058A2600594F6E /* HuanyuanViewController.h */,
 				3D53504422058A2600594F6E /* HuanyuanViewController.m */,
-				3D53504222058A2600594F6E /* XYBGViewController.h */,
-				3D53504622058A2600594F6E /* XYBGViewController.m */,
 				3D53504522058A2600594F6E /* YuanDetailViewController.h */,
 				3D53504A22058A2600594F6E /* YuanDetailViewController.m */,
 				3D53504922058A2600594F6E /* YuanwangViewController.h */,
 				3D53504322058A2600594F6E /* YuanwangViewController.m */,
-				3D53504022058A2600594F6E /* YwEditVController.h */,
-				3D53504822058A2600594F6E /* YwEditVController.m */,
 				3D53504722058A2600594F6E /* YWTableViewCell.h */,
 				3D53504122058A2600594F6E /* YWTableViewCell.m */,
 				3D8AFAB12235300600FC59DD /* FotaiVController.h */,
@@ -1295,7 +1285,6 @@
 				3D5350332205895400594F6E /* UIColor+Hex.m in Sources */,
 				3D9534B922194EC1000E53EC /* MMMultiFitlerView.m in Sources */,
 				3D9534B722194EC1000E53EC /* MMNormalCell.m in Sources */,
-				3D5350BE22058A2700594F6E /* YwEditVController.m in Sources */,
 				3D9534AD22194EC1000E53EC /* MMSingleItem.m in Sources */,
 				3D53502D2205895400594F6E /* MOFSPickerManager.m in Sources */,
 				3D53502B2205895400594F6E /* MOFSWishTypePickerView.m in Sources */,
@@ -1303,7 +1292,6 @@
 				3D5350242205895400594F6E /* LocalItem.m in Sources */,
 				3D9534BE22194EC1000E53EC /* UIColor+ComboBoxExtension.m in Sources */,
 				3D9534AE22194EC1000E53EC /* MMItem.m in Sources */,
-				3D5350BD22058A2700594F6E /* XYBGViewController.m in Sources */,
 				3D5350312205895400594F6E /* MOFSAddressPickerView.m in Sources */,
 				3D9534B022194EC1000E53EC /* MMLayout.m in Sources */,
 				847DC96E2238FE9A00EB3B52 /* HWDownSelectedView.m in Sources */,

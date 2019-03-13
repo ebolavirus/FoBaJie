@@ -7,7 +7,6 @@
 //
 
 #import "YuanwangViewController.h"
-#import "XYBGViewController.h"
 #import "NIDropDown.h"
 #import <FlatUIKit.h>
 #import <UITextView+Placeholder/UITextView+Placeholder.h>
@@ -17,7 +16,7 @@
 #import <Masonry.h>
 #import "tooles.h"
 
-@interface YuanwangViewController ()<NIDropDownDelegate,UITextViewDelegate,XYBGDelegate,VCIAPDelegate>
+@interface YuanwangViewController ()<NIDropDownDelegate,UITextViewDelegate,VCIAPDelegate>
 {
 	NIDropDown *dropDown;
 }

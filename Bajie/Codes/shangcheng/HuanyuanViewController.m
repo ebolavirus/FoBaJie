@@ -13,7 +13,6 @@
 #import <SVProgressHUD.h>
 #import <FlatUIKit.h>
 #import "YuanDetailViewController.h"
-#import "YwEditVController.h"
 #import "YWTableViewCell.h"
 #import <KGModal.h>
 #import "tooles.h"
@@ -255,13 +254,13 @@
 
 -(void)ydClickIndex:(NSInteger)buttonIndex {
 	NSLog(@"ydCLickllll:%ld",buttonIndex);
-	if (buttonIndex == 1) {// 编辑
-		YwEditVController *vc = [YwEditVController new];
-		[vc setWishItem:self.ydVC.myWish];
-		[self.navigationController pushViewController:vc animated:YES];
-	}else if (buttonIndex == 2) {//祝福ta
-		[self segChanged:nil];
-	}
+	[self segChanged:nil];
+//	if (buttonIndex == 1) {// 编辑
+//		YwEditVController *vc = [YwEditVController new];
+//		[vc setWishItem:self.ydVC.myWish];
+//		[self.navigationController pushViewController:vc animated:YES];
+//	}else if (buttonIndex == 2) {//祝福ta
+//	}
 }
 
 @end

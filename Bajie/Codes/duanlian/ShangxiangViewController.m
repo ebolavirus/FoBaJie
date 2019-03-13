@@ -11,7 +11,6 @@
 #import <SVProgressHUD.h>
 #import "LocalItem.h"
 #import "XianghuoViewController.h"
-#import "FotaiVController.h"
 #import "AppDelegate.h"
 #import <Masonry.h>
 #import "tooles.h"
@@ -108,10 +107,6 @@
 		[self.stoveButton addTarget:self action:@selector(stovePressed:) forControlEvents:UIControlEventTouchUpInside];
 		self.stoveButton.backgroundColor = [UIColor clearColor];
 		[self.view addSubview:self.stoveButton];
-		
-		FotaiVController *testVC = [[FotaiVController alloc] initWithFoID:9 andXiangID:0 andVoterName:@"" andKunit:kDeviceWidth];
-		[self.view addSubview:testVC.view];
-		
 	}
 	return self;
 }
