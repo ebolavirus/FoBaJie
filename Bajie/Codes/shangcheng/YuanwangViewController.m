@@ -74,9 +74,10 @@
 		self.foDropDown.layer.borderWidth = 1;
 		self.foDropDown.layer.borderColor = [UIColor blackColor].CGColor;
 		self.foDropDown.backgroundColor = MMColorGrey;
+		self.foDropDown.font = [UIFont flatFontOfSize:14.0f];
 		[self.foDropDown setText:@"药师佛"];
 		self.foDropDown.delegate = self;
-		self.foDropDown.listArray = @[@"药师佛",@"释迦牟尼佛",@"阿弥陀佛",@"普贤菩萨",@"文殊师利菩萨",@"观世音菩萨",@"地藏王菩萨",@"弥勒尊佛",@"准提菩萨",@"大势至菩萨",@"南无离怖如来",@"南无金色宝光妙行成就如来",@"南无拘那含牟尼佛",@"南无甘露王如来",@"南无广博身如来",@"南无法海雷音如来",@"南无宝月智严光音自在如来",@"宝胜如来",@"拘留孙佛",@"韦驮菩萨",@"毗卢遮那佛",@"婆罗利胜头羯罗夜",@"南无无忧最胜吉祥如来",@"南无尸弃佛"];
+		self.foDropDown.listArray = @[@"药师佛",@"释迦牟尼佛",@"阿弥陀佛",@"普贤菩萨",@"文殊师利菩萨",@"观世音菩萨",@"地藏王菩萨",@"弥勒尊佛",@"准提菩萨",@"大势至菩萨",@"宝胜如来",@"拘留孙佛",@"韦驮菩萨",@"毗卢遮那佛",@"南无尸弃佛"];
 		[self.view addSubview:self.foDropDown];
 		
 		self.titleLabel = [UILabel new];
@@ -144,13 +145,13 @@
 	}];
 	
 	[self.foLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.size.mas_equalTo(CGSizeMake(90, 20));
+		make.size.mas_equalTo(CGSizeMake(120, 20));
 		make.left.mas_equalTo(ws.view).with.offset(10);
 		make.top.mas_equalTo(ws.view).with.offset(10);
 	}];
 	
 	[self.foDropDown mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.size.mas_equalTo(CGSizeMake(160, 25));
+		make.size.mas_equalTo(CGSizeMake(120, 25));
 		make.left.mas_equalTo(ws.view).with.offset(10);
 		make.top.mas_equalTo(ws.foLabel.mas_bottom).with.offset(5);
 	}];
@@ -315,6 +316,7 @@
 
 - (void)downSelectedView:(HWDownSelectedView *)selectedView didSelectedAtIndex:(NSIndexPath *)indexPath {
 	NSLog(@"%ld, %@", indexPath.row, selectedView.listArray[indexPath.row]);
+	[self.foViewController setFoName:selectedView.listArray[indexPath.row]];
 }
 
 @end
