@@ -12,10 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface FotaiVController : UIViewController
 
-- (id)initWithFoID:(int)aFoID
+- (id)initWithFoName:(NSString*)aFoName
         andXiangID:(int)aXiangID
       andVoterName:(NSString*)voterName
           andKunit:(CGFloat)akunit;
+
+-(void)setFoName:(NSString*)aFoName;
+-(void)setXiangID:(int)aXiangID;
 
 @end
 

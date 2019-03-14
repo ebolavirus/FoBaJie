@@ -13,6 +13,8 @@
 #import <SVProgressHUD.h>
 #import "AppDelegate.h"
 #import "MOFSPickerManager.h"
+#import "FotaiVController.h"
+#import "HWDownSelectedView.h"
 #import <Masonry.h>
 #import "tooles.h"
 
@@ -22,6 +24,8 @@
 }
 
 -(void)rel;
+
+@property(nonatomic,strong) FotaiVController *foViewController;
 
 @property(nonatomic,strong) NSString *bigwish;
 @property(nonatomic,strong) NSString *smallwish;
@@ -52,6 +56,12 @@
 		self.bigwish = @"";
 		self.smallwish = @"";
 		self.luck_no = 0;
+        
+        self.foViewController = [[FotaiVController alloc] initWithFoName:@"药师佛"
+                                                              andXiangID:1
+                                                            andVoterName:APPALL.myUserItem.username
+                                                                andKunit:kDeviceWidth];
+        [self.view addSubview:self.foViewController.view];
 		
 		self.titleLabel = [UILabel new];
 		self.titleLabel.numberOfLines = 0;
@@ -148,11 +158,17 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	WS(ws);
+    
+    [self.foViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(ws.view.mas_left);
+        make.right.mas_equalTo(ws.view.mas_right);
+        make.top.mas_equalTo(ws.view);
+    }];
 	
 	[self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(ws.view.mas_left);
 		make.right.mas_equalTo(ws.view.mas_right);
-		make.top.mas_equalTo(ws.view).with.offset(10);
+		make.top.mas_equalTo(ws.view).with.offset(kDeviceWidth * 468/566);
 		make.height.mas_equalTo(20);
 	}];
 	

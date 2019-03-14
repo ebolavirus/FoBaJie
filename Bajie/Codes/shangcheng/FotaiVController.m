@@ -28,7 +28,7 @@
 
 @implementation FotaiVController
 
-- (id)initWithFoID:(int)aFoID
+- (id)initWithFoName:(NSString*)aFoName
 				andXiangID:(int)aXiangID
 			andVoterName:(NSString*)voterName
           andKunit:(CGFloat)akunit
@@ -61,7 +61,7 @@
 		[self.view addSubview:self.RFireImageView];
 		
 		self.FoImageView = [UIImageView new];
-		self.FoImageView.image = [UIImage imageNamed:[tooles getPicNameByFoName:@""]];
+		self.FoImageView.image = [UIImage imageNamed:[tooles getPicNameByFoName:aFoName]];
 		self.FoImageView.frame = CGRectMake(kunit * 159/566, 0, kunit * 248/566, kunit * 309/566);
 		[self.view addSubview:self.FoImageView];
 		
@@ -76,7 +76,7 @@
 		[self.view addSubview:self.RDImageView];
 		
 		self.FlowerImageView = [UIImageView new];
-		self.FlowerImageView.image = [UIImage imageNamed:@"fo_gp_flower.gif"];
+		self.FlowerImageView.image = [UIImage imageNamed:[tooles getXiangPicNameByXiangID:aXiangID]];
 		self.FlowerImageView.frame = CGRectMake(kunit * 224/566, kunit * 309/566, kunit * 118/566, kunit * 159/566);
 		[self.view addSubview:self.FlowerImageView];
 		
@@ -105,6 +105,14 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
+}
+
+-(void)setFoName:(NSString*)aFoName {
+    self.FoImageView.image = [UIImage imageNamed:[tooles getPicNameByFoName:aFoName]];
+}
+
+-(void)setXiangID:(int)aXiangID {
+    self.FlowerImageView.image = [UIImage imageNamed:[tooles getXiangPicNameByXiangID:aXiangID]];
 }
 
 @end
