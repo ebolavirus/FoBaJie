@@ -22,7 +22,6 @@
 
 @property(nonatomic,strong) NSArray *wishArray;
 @property(nonatomic,strong) UITableView *listView;
-@property(nonatomic,strong) UILabel *singleToolbar;
 @property(nonatomic,strong) FUIButton *xyButton;
 @property(nonatomic,strong) MJRefreshNormalHeader *listheader;
 @property(nonatomic,strong) MJRefreshAutoNormalFooter *listfooter;
@@ -48,9 +47,6 @@
 		self.pageEleCount = 30;
 		
 		self.wishArray = [NSArray array];
-		self.singleToolbar = [UILabel new];
-		self.singleToolbar.backgroundColor = MMColorRed;
-		[self.view addSubview:self.singleToolbar];
 		
 		self.listView = [UITableView new];
 		self.listView.backgroundColor = [UIColor clearColor];
@@ -160,13 +156,6 @@
 	[super viewWillAppear:animated];
 	WS(ws);
 	
-	[self.singleToolbar mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(ws.view.mas_left);
-		make.right.mas_equalTo(ws.view.mas_right);
-		make.top.mas_equalTo(ws.view.mas_top);
-		make.height.mas_equalTo(44);
-	}];
-	
 	[self.xyButton mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(ws.view);
 		make.right.mas_equalTo(ws.view);
@@ -177,7 +166,7 @@
 	[self.listView mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(ws.view.mas_left);
 		make.right.mas_equalTo(ws.view.mas_right);
-		make.top.mas_equalTo(self.singleToolbar.mas_bottom);
+		make.top.mas_equalTo(ws.view);
 		make.bottom.mas_equalTo(self.xyButton.mas_top);
 	}];
 	[self segChanged:nil];

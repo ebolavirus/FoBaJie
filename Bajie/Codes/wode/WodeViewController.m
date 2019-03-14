@@ -106,8 +106,10 @@
                 case 0:{
                     if(APPALL.myUserItem.username.length <= 0){
                         cell.textLabel.text = @"尚未编辑资料";
+											cell.detailTextLabel.text = @"";
                     } else {
                         cell.textLabel.text = APPALL.myUserItem.username;
+											cell.detailTextLabel.text = @"编辑资料";
                     }
                 }
                     break;

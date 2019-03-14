@@ -7,7 +7,6 @@
 //
 
 #import "ShangxiangViewController.h"
-#import "NIDropDown.h"
 #import <SVProgressHUD.h>
 #import "LocalItem.h"
 #import "XianghuoViewController.h"
@@ -15,11 +14,7 @@
 #import <Masonry.h>
 #import "tooles.h"
 
-@interface ShangxiangViewController ()<NIDropDownDelegate,VCIAPDelegate>{
-	NIDropDown *dropDown;
-}
-
--(void)rel;
+@interface ShangxiangViewController ()<VCIAPDelegate>
 
 @property(nonatomic,strong) UIImageView *bgView;
 @property(nonatomic,strong) UIImageView *foLightView;
@@ -32,7 +27,7 @@
 @property(nonatomic,strong) UIImageView *xiangView;
 @property(nonatomic,strong) UILabel *xiangLabel;
 @property(nonatomic,strong) UIButton *stoveButton;
-@property(nonatomic,strong) UIButton *moneyButton;
+@property(nonatomic,strong) UILabel *moneyLabel;
 @property(nonatomic,strong) NSString *moneytext;
 
 @end
@@ -93,15 +88,13 @@
 		[self.view addSubview:self.gongdexiangButton];
 		
 		self.moneytext = @"8元";
-		self.moneyButton = [UIButton new];
-		[self.moneyButton setBackgroundColor:MMColorYellow];
-		[self.moneyButton setTitleColor:MMColorBlack forState:UIControlStateNormal];
-		self.moneyButton.layer.borderWidth = 2.0f;
-		self.moneyButton.layer.borderColor = MMColorBlack.CGColor;
-		self.moneyButton.layer.cornerRadius = 3.0f;
-		[self.moneyButton setTitle:@"8功德" forState:UIControlStateNormal];
-		[self.moneyButton addTarget:self action:@selector(moneyPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:self.moneyButton];
+		self.moneyLabel = [UILabel new];
+		[self.moneyLabel setTextColor:[UIColor whiteColor]];
+		[self.moneyLabel setFont:[UIFont boldSystemFontOfSize:14.0f]];
+		self.moneyLabel.textAlignment = NSTextAlignmentCenter;
+		self.moneyLabel.numberOfLines = 0;
+		self.moneyLabel.text = @"点选功德箱\n进行捐献";
+		[self.view addSubview:self.moneyLabel];
 		
 		self.stoveButton = [UIButton new];
 		[self.stoveButton addTarget:self action:@selector(stovePressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -177,8 +170,8 @@
 		make.bottom.mas_equalTo(ws.view.mas_bottom);
 	}];
 	
-	[self.moneyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.size.mas_equalTo(CGSizeMake(self.gongdexiangButton.intrinsicContentSize.width ,20));
+	[self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.size.mas_equalTo(CGSizeMake(self.gongdexiangButton.intrinsicContentSize.width ,40));
 		make.left.mas_equalTo(ws.view.mas_left);
 		make.bottom.mas_equalTo(self.gongdexiangButton.mas_top).with.offset(-10);
 	}];
@@ -228,45 +221,42 @@
 	}
 }
 
--(void)moneyPressed:(id)sender {
-	NSArray * arr = [NSArray arrayWithObjects:@"1功德",@"8功德",@"50功德",@"98功德",@"298功德",nil];
-	if(dropDown == nil) {
-		CGFloat f = 200;
-		dropDown = [[NIDropDown alloc] showDropDown:sender :&f :arr :nil :@"down"];
-		dropDown.delegate = self;
-	}
-	else {
-		[dropDown hideDropDown:sender];
-		[self rel];
-	}
-}
-
-- (void) niDropDownDelegateMethod: (NIDropDown *) sender {
-	[self rel];
-	self.moneytext = [self.moneyButton.titleLabel.text stringByReplacingOccurrencesOfString:@"功德" withString:@"元"];
-	NSLog(@"%@", self.moneytext);
-}
-
--(void)rel{
-	//    [dropDown release];
-	dropDown = nil;
-}
-
 -(void)gongdePressed:(id)sender{
-	UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"功德箱" message:[NSString stringWithFormat:@"随缘乐助，广种福田。\n功德：%@",self.moneytext] preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"功德箱" message:@"随缘乐助，广种福田。\n施财得福，扬善积德。\n我愿捐献：" preferredStyle:UIAlertControllerStyleAlert];
 	//    vc.view.backgroundColor = [UIColor goldColor];
 	UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-	UIAlertAction *ok1Action = [UIAlertAction actionWithTitle:@"确认"style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-		[SVProgressHUD showWithStatus:@"请稍候..."];
-		APPALL.myIAPDelegate = self;
-		NSString *iapID = [tooles getIAPIDByPriceStr:self.moneytext payKind:EPayFN];
-		[APPALL startToIAP:iapID];
+	UIAlertAction *ok1Action = [UIAlertAction actionWithTitle:@"1功德" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+		[self gongdeIAP:@"1元"];
+	}];
+	UIAlertAction *ok8Action = [UIAlertAction actionWithTitle:@"8功德" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+		[self gongdeIAP:@"8元"];
+	}];
+	UIAlertAction *ok50Action = [UIAlertAction actionWithTitle:@"50功德" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+		[self gongdeIAP:@"50元"];
+	}];
+	UIAlertAction *ok98Action = [UIAlertAction actionWithTitle:@"98功德" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+		[self gongdeIAP:@"98元"];
+	}];
+	UIAlertAction *ok298Action = [UIAlertAction actionWithTitle:@"298功德" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+		[self gongdeIAP:@"298元"];
 	}];
 	[vc addAction:ok1Action];
+	[vc addAction:ok8Action];
+	[vc addAction:ok50Action];
+	[vc addAction:ok98Action];
+	[vc addAction:ok298Action];
 	[vc addAction:cancelAction];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[self presentViewController:vc animated:YES completion:nil];
+		[self presentViewController:vc animated:NO completion:nil];
 	});
+}
+
+-(void)gongdeIAP:(NSString*)moneyStr {
+	[SVProgressHUD showWithStatus:@"请稍候..."];
+	self.moneytext = moneyStr;
+	APPALL.myIAPDelegate = self;
+	NSString *iapID = [tooles getIAPIDByPriceStr:self.moneytext payKind:EPayFN];
+	[APPALL startToIAP:iapID];
 }
 
 -(void)stovePressed:(id)sender{

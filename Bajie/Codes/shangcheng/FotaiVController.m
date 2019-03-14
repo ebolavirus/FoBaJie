@@ -86,7 +86,7 @@
 		[self.view addSubview:self.VoterBgImageView];
 		
 		self.VoterNameLabel = [UILabel new];
-		self.VoterNameLabel.text = @"烧香人: 埃博拉病毒埃博拉病毒";
+		self.VoterNameLabel.text = [NSString stringWithFormat:@"烧香人: %@", voterName];
 		self.VoterNameLabel.textAlignment = NSTextAlignmentCenter;
 		self.VoterNameLabel.font = [UIFont flatFontOfSize:kunit/25];
 		self.VoterNameLabel.frame = self.VoterBgImageView.frame;

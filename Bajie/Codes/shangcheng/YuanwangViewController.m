@@ -18,7 +18,7 @@
 #import <Masonry.h>
 #import "tooles.h"
 
-@interface YuanwangViewController ()<NIDropDownDelegate,UITextViewDelegate,VCIAPDelegate>
+@interface YuanwangViewController ()<NIDropDownDelegate,UITextViewDelegate,VCIAPDelegate, HWDownSelectedViewDelegate>
 {
 	NIDropDown *dropDown;
 }
@@ -26,6 +26,9 @@
 -(void)rel;
 
 @property(nonatomic,strong) FotaiVController *foViewController;
+@property(nonatomic,assign) CGFloat fotaiWidth;
+@property(nonatomic,strong) UILabel *foLabel;
+@property(nonatomic,strong) HWDownSelectedView *foDropDown;
 
 @property(nonatomic,strong) NSString *bigwish;
 @property(nonatomic,strong) NSString *smallwish;
@@ -35,11 +38,6 @@
 @property(nonatomic,strong) FUIButton *kindButton;
 @property(nonatomic,strong) UILabel *moneyLabel;
 @property(nonatomic,strong) UITextView *contentField;
-@property(nonatomic,strong) FUIButton *xyButton;
-@property(nonatomic,strong) FUISwitch *hiddenSwitch;
-@property(nonatomic,strong) UILabel *hiddenText;
-@property(nonatomic,strong) FUISwitch *anonySwitch;
-@property(nonatomic,strong) UILabel *anonyText;
 @property(nonatomic,strong) UIButton *moneyButton;
 
 @end
@@ -56,12 +54,30 @@
 		self.bigwish = @"";
 		self.smallwish = @"";
 		self.luck_no = 0;
-        
-        self.foViewController = [[FotaiVController alloc] initWithFoName:@"药师佛"
-                                                              andXiangID:1
-                                                            andVoterName:APPALL.myUserItem.username
-                                                                andKunit:kDeviceWidth];
-        [self.view addSubview:self.foViewController.view];
+		
+		self.fotaiWidth = kDeviceWidth;
+		self.foViewController = [[FotaiVController alloc] initWithFoName:@"药师佛"
+																													andXiangID:1
+																												andVoterName:APPALL.myUserItem.username
+																														andKunit:self.fotaiWidth];
+		[self.view addSubview:self.foViewController.view];
+		
+		self.foLabel = [UILabel new];
+		self.foLabel.numberOfLines = 0;
+		self.foLabel.textAlignment = NSTextAlignmentLeft;
+		self.foLabel.text = @"佛像选择:";
+		self.foLabel.font = [UIFont fontWithName:@"Arial" size:14.0f];
+		[self.view addSubview:self.foLabel];
+		
+		self.foDropDown = [HWDownSelectedView new];
+		self.foDropDown.placeholder = @"请选择";
+		self.foDropDown.layer.borderWidth = 1;
+		self.foDropDown.layer.borderColor = [UIColor blackColor].CGColor;
+		self.foDropDown.backgroundColor = MMColorGrey;
+		[self.foDropDown setText:@"药师佛"];
+		self.foDropDown.delegate = self;
+		self.foDropDown.listArray = @[@"药师佛",@"释迦牟尼佛",@"阿弥陀佛",@"普贤菩萨",@"文殊师利菩萨",@"观世音菩萨",@"地藏王菩萨",@"弥勒尊佛",@"准提菩萨",@"大势至菩萨",@"南无离怖如来",@"南无金色宝光妙行成就如来",@"南无拘那含牟尼佛",@"南无甘露王如来",@"南无广博身如来",@"南无法海雷音如来",@"南无宝月智严光音自在如来",@"宝胜如来",@"拘留孙佛",@"韦驮菩萨",@"毗卢遮那佛",@"婆罗利胜头羯罗夜",@"南无无忧最胜吉祥如来",@"南无尸弃佛"];
+		[self.view addSubview:self.foDropDown];
 		
 		self.titleLabel = [UILabel new];
 		self.titleLabel.numberOfLines = 0;
@@ -109,44 +125,7 @@
 		[self.moneyButton addTarget:self action:@selector(moneyPressed:) forControlEvents:UIControlEventTouchUpInside];
 		[self.view addSubview:self.moneyButton];
 		
-		self.xyButton = [FUIButton new];
-		self.xyButton.buttonColor = MMColorRed;
-		self.xyButton.shadowColor = MMColorShadowRed;
-		self.xyButton.shadowHeight = 3.0f;
-		self.xyButton.cornerRadius = 6.0f;
-		self.xyButton.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-		[self.xyButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-		[self.xyButton setTitle:@"提  交  忏  悔" forState:UIControlStateNormal];
-		[self.xyButton addTarget:self action:@selector(xyPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:self.xyButton];
-		
-		self.hiddenSwitch = [FUISwitch new];
-		self.hiddenSwitch.onColor = MMColorYellow;
-		self.hiddenSwitch.offColor = MMColorRed;
-		self.hiddenSwitch.onBackgroundColor = MMColorShadowRed;
-		self.hiddenSwitch.offBackgroundColor = MMColorShadowRed;
-		self.hiddenSwitch.on = NO;
-		[self.view addSubview:self.hiddenSwitch];
-		
-		self.hiddenText = [UILabel new];
-		self.hiddenText.numberOfLines = 0;
-		self.hiddenText.text = @"设置私密，仅自己可见。";
-		self.hiddenText.font = [UIFont fontWithName:@"Arial" size:14.0f];
-		[self.view addSubview:self.hiddenText];
-		
-		self.anonySwitch = [FUISwitch new];
-		self.anonySwitch.onColor = MMColorYellow;
-		self.anonySwitch.offColor = MMColorRed;
-		self.anonySwitch.onBackgroundColor = MMColorShadowRed;
-		self.anonySwitch.offBackgroundColor = MMColorShadowRed;
-		self.anonySwitch.on = YES;
-		[self.view addSubview:self.anonySwitch];
-		
-		self.anonyText = [UILabel new];
-		self.anonyText.numberOfLines = 0;
-		self.anonyText.text = @"设置匿名，不显示自己名字。";
-		self.anonyText.font = [UIFont fontWithName:@"Arial" size:14.0f];
-		[self.view addSubview:self.anonyText];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(xyPressed:)];
 	}
 	return self;
 }
@@ -158,17 +137,28 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	WS(ws);
-    
-    [self.foViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(ws.view.mas_left);
-        make.right.mas_equalTo(ws.view.mas_right);
-        make.top.mas_equalTo(ws.view);
-    }];
+	
+	[self.foViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.left.mas_equalTo(ws.view.mas_left);
+		make.top.mas_equalTo(ws.view);
+	}];
+	
+	[self.foLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.size.mas_equalTo(CGSizeMake(90, 20));
+		make.left.mas_equalTo(ws.view).with.offset(10);
+		make.top.mas_equalTo(ws.view).with.offset(10);
+	}];
+	
+	[self.foDropDown mas_makeConstraints:^(MASConstraintMaker *make) {
+		make.size.mas_equalTo(CGSizeMake(160, 25));
+		make.left.mas_equalTo(ws.view).with.offset(10);
+		make.top.mas_equalTo(ws.foLabel.mas_bottom).with.offset(5);
+	}];
 	
 	[self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(ws.view.mas_left);
 		make.right.mas_equalTo(ws.view.mas_right);
-		make.top.mas_equalTo(ws.view).with.offset(kDeviceWidth * 468/566);
+		make.top.mas_equalTo(ws.view).with.offset(ws.fotaiWidth * 468/566);
 		make.height.mas_equalTo(20);
 	}];
 	
@@ -179,45 +169,10 @@
 		make.height.mas_equalTo(40);
 	}];
 	
-	[self.anonySwitch mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(ws.view).with.offset(20);
-		make.width.mas_equalTo(60);
-		make.bottom.mas_equalTo(ws.view).with.offset(-60);
-		make.height.mas_equalTo(20);
-	}];
-	
-	[self.anonyText mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(self.anonySwitch.mas_right).with.offset(10);
-		make.right.mas_equalTo(ws.view).with.offset(-20);
-		make.bottom.mas_equalTo(ws.view).with.offset(-60);
-		make.height.mas_equalTo(20);
-	}];
-	
-	[self.hiddenSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(ws.view).with.offset(20);
-		make.width.mas_equalTo(60);
-		make.bottom.mas_equalTo(ws.anonySwitch.mas_top).with.offset(-10);
-		make.height.mas_equalTo(20);
-	}];
-	
-	[self.hiddenText mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(self.hiddenSwitch.mas_right).with.offset(10);
-		make.right.mas_equalTo(ws.view).with.offset(-20);
-		make.bottom.mas_equalTo(ws.anonyText.mas_top).with.offset(-10);
-		make.height.mas_equalTo(20);
-	}];
-	
-	[self.xyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(ws.view).with.offset(20);
-		make.right.mas_equalTo(ws.view).with.offset(-20);
-		make.bottom.mas_equalTo(self.hiddenSwitch.mas_top).with.offset(-10);
-		make.height.mas_equalTo(40);
-	}];
-	
 	[self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(self.titleLabel.mas_left);
 		make.right.mas_equalTo(self.titleLabel.mas_right);
-		make.bottom.mas_equalTo(self.xyButton.mas_top).with.offset(-10);
+		make.bottom.mas_equalTo(ws.view).with.offset(-10);
 		make.height.mas_equalTo(80);
 	}];
 	
@@ -310,7 +265,7 @@
 
 - (void)bgIndex:(NSInteger)bgid {
 	self.luck_no = bgid;
-//	[self.bgButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%li.jpg",self.luck_no]] forState:UIControlStateNormal];
+	//	[self.bgButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%li.jpg",self.luck_no]] forState:UIControlStateNormal];
 }
 
 -(void)saveWish {
@@ -327,8 +282,6 @@
 	[todoFolder setObject:[NSNumber numberWithInteger:self.luck_no] forKey:@"luck_no"];
 	NSDate *saveDate = [NSDate dateWithTimeIntervalSinceNow:goldnum * 86400];
 	[todoFolder setObject:saveDate forKey:@"wishdate"];
-	[todoFolder setObject:@(self.hiddenSwitch.isOn) forKey:@"hidden"];
-	[todoFolder setObject:@(self.anonySwitch.isOn) forKey:@"anonymous"];
 	[todoFolder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
 		if(succeeded){
 			UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"许愿成功" message:@"恭喜您许愿成功！" preferredStyle:UIAlertControllerStyleAlert];
@@ -347,7 +300,7 @@
 
 - (void)VCIAPSucceed:(NSString*)aSucc{
 	[SVProgressHUD dismiss];
-    [self saveWish];
+	[self saveWish];
 }
 
 - (void)VCIAPFailed:(NSString*)aSucc{
@@ -358,6 +311,10 @@
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self presentViewController:vc animated:YES completion:nil];
 	});
+}
+
+- (void)downSelectedView:(HWDownSelectedView *)selectedView didSelectedAtIndex:(NSIndexPath *)indexPath {
+	NSLog(@"%ld, %@", indexPath.row, selectedView.listArray[indexPath.row]);
 }
 
 @end
