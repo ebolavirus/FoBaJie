@@ -292,12 +292,6 @@
 	}];
 }
 
--(void)bgPressed:(id)sender {
-	XYBGViewController *vc = [XYBGViewController new];
-	vc.delegate = self;
-	[self.navigationController pushViewController:vc animated:YES];
-}
-
 - (void)bgIndex:(NSInteger)bgid {
 	self.luck_no = bgid;
 //	[self.bgButton setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"bg_%li.jpg",self.luck_no]] forState:UIControlStateNormal];
