@@ -331,6 +331,7 @@
 
 - (void)VCIAPSucceed:(NSString*)aSucc{
 	[SVProgressHUD dismiss];
+    [self saveWish];
 }
 
 - (void)VCIAPFailed:(NSString*)aSucc{
