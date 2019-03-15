@@ -25,10 +25,16 @@
 
 -(void)rel;
 
+@property(nonatomic,assign) int xiangIndex;
 @property(nonatomic,strong) FotaiVController *foViewController;
 @property(nonatomic,assign) CGFloat fotaiWidth;
 @property(nonatomic,strong) UILabel *foLabel;
 @property(nonatomic,strong) HWDownSelectedView *foDropDown;
+
+@property(nonatomic,strong) FUIButton *xiangButton1;
+@property(nonatomic,strong) FUIButton *xiangButton2;
+@property(nonatomic,strong) FUIButton *xiangButton3;
+@property(nonatomic,strong) FUIButton *xiangButton4;
 
 @property(nonatomic,strong) NSString *bigwish;
 @property(nonatomic,strong) NSString *smallwish;
@@ -54,10 +60,11 @@
 		self.bigwish = @"";
 		self.smallwish = @"";
 		self.luck_no = 0;
+        self.xiangIndex = 0;
 		
 		self.fotaiWidth = kDeviceWidth;
 		self.foViewController = [[FotaiVController alloc] initWithFoName:@"药师佛"
-																													andXiangID:1
+																													andXiangID:self.xiangIndex
 																												andVoterName:APPALL.myUserItem.username
 																														andKunit:self.fotaiWidth];
 		[self.view addSubview:self.foViewController.view];
@@ -74,11 +81,59 @@
 		self.foDropDown.layer.borderWidth = 1;
 		self.foDropDown.layer.borderColor = [UIColor blackColor].CGColor;
 		self.foDropDown.backgroundColor = MMColorGrey;
-		self.foDropDown.font = [UIFont flatFontOfSize:14.0f];
+		self.foDropDown.font = [UIFont flatFontOfSize:12.0f];
 		[self.foDropDown setText:@"药师佛"];
 		self.foDropDown.delegate = self;
 		self.foDropDown.listArray = @[@"药师佛",@"释迦牟尼佛",@"阿弥陀佛",@"普贤菩萨",@"文殊师利菩萨",@"观世音菩萨",@"地藏王菩萨",@"弥勒尊佛",@"准提菩萨",@"大势至菩萨",@"宝胜如来",@"拘留孙佛",@"韦驮菩萨",@"毗卢遮那佛",@"南无尸弃佛"];
 		[self.view addSubview:self.foDropDown];
+        
+        self.xiangButton1 = [FUIButton new];
+        self.xiangButton1.buttonColor = MMColorRed;
+        self.xiangButton1.shadowColor = MMColorShadowRed;
+        self.xiangButton1.shadowHeight = 2.0f;
+        self.xiangButton1.cornerRadius = 2.0f;
+        self.xiangButton1.tag = 1;
+        self.xiangButton1.titleLabel.font = [UIFont boldFlatFontOfSize:14];
+        [self.xiangButton1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.xiangButton1 setTitle:@"供香" forState:UIControlStateNormal];
+        [self.xiangButton1 addTarget:self action:@selector(xiangPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.xiangButton1];
+        
+        self.xiangButton2 = [FUIButton new];
+        self.xiangButton2.buttonColor = MMColorRed;
+        self.xiangButton2.shadowColor = MMColorShadowRed;
+        self.xiangButton2.shadowHeight = 2.0f;
+        self.xiangButton2.cornerRadius = 2.0f;
+        self.xiangButton2.tag = 2;
+        self.xiangButton2.titleLabel.font = [UIFont boldFlatFontOfSize:14];
+        [self.xiangButton2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.xiangButton2 setTitle:@"供花" forState:UIControlStateNormal];
+        [self.xiangButton2 addTarget:self action:@selector(xiangPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.xiangButton2];
+        
+        self.xiangButton3 = [FUIButton new];
+        self.xiangButton3.buttonColor = MMColorRed;
+        self.xiangButton3.shadowColor = MMColorShadowRed;
+        self.xiangButton3.shadowHeight = 2.0f;
+        self.xiangButton3.cornerRadius = 2.0f;
+        self.xiangButton3.tag = 3;
+        self.xiangButton3.titleLabel.font = [UIFont boldFlatFontOfSize:14];
+        [self.xiangButton3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.xiangButton3 setTitle:@"供果" forState:UIControlStateNormal];
+        [self.xiangButton3 addTarget:self action:@selector(xiangPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.xiangButton3];
+        
+        self.xiangButton4 = [FUIButton new];
+        self.xiangButton4.buttonColor = MMColorRed;
+        self.xiangButton4.shadowColor = MMColorShadowRed;
+        self.xiangButton4.shadowHeight = 2.0f;
+        self.xiangButton4.cornerRadius = 2.0f;
+        self.xiangButton4.tag = 4;
+        self.xiangButton4.titleLabel.font = [UIFont boldFlatFontOfSize:14];
+        [self.xiangButton4 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [self.xiangButton4 setTitle:@"供水" forState:UIControlStateNormal];
+        [self.xiangButton4 addTarget:self action:@selector(xiangPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.xiangButton4];
 		
 		self.titleLabel = [UILabel new];
 		self.titleLabel.numberOfLines = 0;
@@ -145,21 +200,45 @@
 	}];
 	
 	[self.foLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.size.mas_equalTo(CGSizeMake(120, 20));
+		make.size.mas_equalTo(CGSizeMake(110, 20));
 		make.left.mas_equalTo(ws.view).with.offset(10);
 		make.top.mas_equalTo(ws.view).with.offset(10);
 	}];
 	
 	[self.foDropDown mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.size.mas_equalTo(CGSizeMake(120, 25));
+		make.size.mas_equalTo(CGSizeMake(110, 25));
 		make.left.mas_equalTo(ws.view).with.offset(10);
 		make.top.mas_equalTo(ws.foLabel.mas_bottom).with.offset(5);
 	}];
+    
+    [self.xiangButton1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake((kDeviceWidth - 40)/4, 25));
+        make.left.mas_equalTo(ws.view).with.offset(5);
+        make.top.mas_equalTo(ws.view).with.offset(ws.fotaiWidth * 468/566);
+    }];
+    
+    [self.xiangButton2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake((kDeviceWidth - 40)/4, 25));
+        make.left.mas_equalTo(ws.xiangButton1.mas_right).with.offset(10);
+        make.top.mas_equalTo(ws.xiangButton1);
+    }];
+    
+    [self.xiangButton3 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake((kDeviceWidth - 40)/4, 25));
+        make.left.mas_equalTo(ws.xiangButton2.mas_right).with.offset(10);
+        make.top.mas_equalTo(ws.xiangButton2);
+    }];
+    
+    [self.xiangButton4 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake((kDeviceWidth - 40)/4, 25));
+        make.left.mas_equalTo(ws.xiangButton3.mas_right).with.offset(10);
+        make.top.mas_equalTo(ws.xiangButton3);
+    }];
 	
 	[self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
 		make.left.mas_equalTo(ws.view.mas_left);
 		make.right.mas_equalTo(ws.view.mas_right);
-		make.top.mas_equalTo(ws.view).with.offset(ws.fotaiWidth * 468/566);
+		make.top.mas_equalTo(ws.xiangButton1.mas_bottom).with.offset(10);
 		make.height.mas_equalTo(20);
 	}];
 	
@@ -228,6 +307,12 @@
 			[self presentViewController:vc animated:YES completion:nil];
 		});
 	}
+}
+
+-(void)xiangPressed:(id)sender {
+    NSLog(@"%ld", [sender tag]);
+    self.xiangIndex = (int)[sender tag] - 1;
+    [self.foViewController setXiangID:self.xiangIndex];
 }
 
 -(void)moneyPressed:(id)sender {
@@ -320,4 +405,3 @@
 }
 
 @end
-

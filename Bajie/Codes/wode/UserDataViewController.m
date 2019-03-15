@@ -227,18 +227,18 @@
                     }];
                 }
                     break;
-//                case 1:{
-//                    [[MOFSPickerManager shareManger] showPickerViewWithDataArray:@[@"不清楚",@"子时(23时至01时)",@"丑时(01时至03时)",@"寅时(03时至05时)",@"卯时(05时至07时)",@"辰时(07时至09时)",@"巳时(09时至11时)",@"午时(11时至13时)",@"未时(13时至15时)",@"申时(15时至17时)",@"酉时(17时至19时)",@"戌时(19时至21时)",@"亥时(21时至23时)"] tag:1 title:nil cancelTitle:@"取消" commitTitle:@"确定" commitBlock:^(NSString *string) {
-//                        if(string.length > 5)
-//                            self.cacheUserItem.btime = [string substringToIndex:2];
-//                        else
-//                            self.cacheUserItem.btime = string;
-//                        [self.tableView reloadData];
-//                    } cancelBlock:^{
-//
-//                    }];
-//                }
-//                    break;
+                case 1:{
+                    [[MOFSPickerManager shareManger] showPickerViewWithDataArray:@[@"不清楚",@"子时(23时至01时)",@"丑时(01时至03时)",@"寅时(03时至05时)",@"卯时(05时至07时)",@"辰时(07时至09时)",@"巳时(09时至11时)",@"午时(11时至13时)",@"未时(13时至15时)",@"申时(15时至17时)",@"酉时(17时至19时)",@"戌时(19时至21时)",@"亥时(21时至23时)"] tag:1 title:nil cancelTitle:@"取消" commitTitle:@"确定" commitBlock:^(NSString *string) {
+                        if(string.length > 5)
+                            self.cacheUserItem.btime = [string substringToIndex:2];
+                        else
+                            self.cacheUserItem.btime = string;
+                        [self.tableView reloadData];
+                    } cancelBlock:^{
+
+                    }];
+                }
+                    break;
                 default:
                     break;
             }

@@ -34,6 +34,7 @@
         self.sex = [dictionary valueForKey:@"sex"];
         self.city = [dictionary valueForKey:@"city"];
         self.birthday = [dictionary valueForKey:@"birthday"];
+        self.btime = [dictionary valueForKey:@"btime"];
     }
     return self;
 }
@@ -47,6 +48,7 @@
         self.sex = @"";
         self.city = @"";
         self.birthday = @"";
+        self.btime = @"";
     }
     return self;
 }
