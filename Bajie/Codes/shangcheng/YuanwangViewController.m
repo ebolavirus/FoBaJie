@@ -7,7 +7,6 @@
 //
 
 #import "YuanwangViewController.h"
-#import "NIDropDown.h"
 #import <FlatUIKit.h>
 #import <UITextView+Placeholder/UITextView+Placeholder.h>
 #import <SVProgressHUD.h>
@@ -18,12 +17,7 @@
 #import <Masonry.h>
 #import "tooles.h"
 
-@interface YuanwangViewController ()<NIDropDownDelegate,UITextViewDelegate,VCIAPDelegate, HWDownSelectedViewDelegate>
-{
-	NIDropDown *dropDown;
-}
-
--(void)rel;
+@interface YuanwangViewController ()<UITextViewDelegate,VCIAPDelegate, HWDownSelectedViewDelegate>
 
 @property(nonatomic,assign) int xiangIndex;
 @property(nonatomic,strong) FotaiVController *foViewController;
@@ -40,11 +34,8 @@
 @property(nonatomic,strong) NSString *smallwish;
 @property(nonatomic,assign) NSInteger luck_no;
 
-@property(nonatomic,strong) UILabel *titleLabel;
 @property(nonatomic,strong) FUIButton *kindButton;
-@property(nonatomic,strong) UILabel *moneyLabel;
 @property(nonatomic,strong) UITextView *contentField;
-@property(nonatomic,strong) UIButton *moneyButton;
 
 @end
 //OK,finally the last xib file to remove.
@@ -135,13 +126,6 @@
         [self.xiangButton4 addTarget:self action:@selector(xiangPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.xiangButton4];
 		
-		self.titleLabel = [UILabel new];
-		self.titleLabel.numberOfLines = 0;
-		self.titleLabel.textAlignment = NSTextAlignmentCenter;
-		self.titleLabel.text = @"在此写下您的忏悔，祝您功德圆满！";
-		self.titleLabel.font = [UIFont fontWithName:@"Arial" size:14.0f];
-		[self.view addSubview:self.titleLabel];
-		
 		self.kindButton = [FUIButton new];
 		self.kindButton.buttonColor = MMColorRed;
 		self.kindButton.shadowColor = MMColorShadowRed;
@@ -165,23 +149,7 @@
 		self.contentField.layer.borderColor = MMColorBlack.CGColor;
 		[self.view addSubview:self.contentField];
 		
-		self.moneyLabel = [UILabel new];
-		self.moneyLabel.numberOfLines = 0;
-		self.moneyLabel.font = [UIFont boldFlatFontOfSize:16];
-		self.moneyLabel.text = [NSString stringWithFormat:@"为挽回我此生功德，我愿捐献：\n供奉佛前油灯。\n(捐献越多，您的许愿在忏悔堂越靠前。)\n  ————%@", APPALL.myUserItem.username];
-		[self.view addSubview:self.moneyLabel];
-		
-		self.moneyButton = [UIButton new];
-		[self.moneyButton setBackgroundColor:MMColorGrey];
-		[self.moneyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-		self.moneyButton.layer.borderWidth = 2.0f;
-		self.moneyButton.layer.borderColor = MMColorBlack.CGColor;
-		self.moneyButton.layer.cornerRadius = 3.0f;
-		[self.moneyButton setTitle:@"0功德" forState:UIControlStateNormal];
-		[self.moneyButton addTarget:self action:@selector(moneyPressed:) forControlEvents:UIControlEventTouchUpInside];
-		[self.view addSubview:self.moneyButton];
-		
-		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(xyPressed:)];
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(xyPressed:)];
 	}
 	return self;
 }
@@ -214,7 +182,7 @@
     [self.xiangButton1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake((kDeviceWidth - 40)/4, 25));
         make.left.mas_equalTo(ws.view).with.offset(5);
-        make.top.mas_equalTo(ws.view).with.offset(ws.fotaiWidth * 468/566);
+        make.top.mas_equalTo(ws.view).with.offset(ws.fotaiWidth * 468/566 + 5);
     }];
     
     [self.xiangButton2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -235,38 +203,18 @@
         make.top.mas_equalTo(ws.xiangButton3);
     }];
 	
-	[self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(ws.view.mas_left);
-		make.right.mas_equalTo(ws.view.mas_right);
-		make.top.mas_equalTo(ws.xiangButton1.mas_bottom).with.offset(10);
-		make.height.mas_equalTo(20);
-	}];
-	
 	[self.kindButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(ws.view).with.offset(20);
-		make.right.mas_equalTo(ws.view).with.offset(-20);
-		make.top.mas_equalTo(self.titleLabel.mas_bottom).with.offset(10);
-		make.height.mas_equalTo(40);
-	}];
-	
-	[self.moneyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(self.titleLabel.mas_left);
-		make.right.mas_equalTo(self.titleLabel.mas_right);
-		make.bottom.mas_equalTo(ws.view).with.offset(-10);
-		make.height.mas_equalTo(80);
-	}];
-	
-	[self.moneyButton mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.size.mas_equalTo(CGSizeMake(100, 20));
-		make.right.mas_equalTo(self.titleLabel.mas_right);
-		make.top.mas_equalTo(self.moneyLabel.mas_top);
+		make.left.mas_equalTo(ws.view).with.offset(5);
+		make.right.mas_equalTo(ws.view).with.offset(-5);
+		make.top.mas_equalTo(ws.xiangButton1.mas_bottom).with.offset(10);
+		make.height.mas_equalTo(30);
 	}];
 	
 	[self.contentField mas_makeConstraints:^(MASConstraintMaker *make) {
-		make.left.mas_equalTo(self.titleLabel.mas_left);
-		make.right.mas_equalTo(self.titleLabel.mas_right);
-		make.top.mas_equalTo(self.kindButton.mas_bottom).with.offset(10);
-		make.bottom.mas_equalTo(self.moneyLabel.mas_top).with.offset(-10);
+		make.left.mas_equalTo(ws.kindButton.mas_left);
+		make.right.mas_equalTo(ws.kindButton.mas_right);
+		make.top.mas_equalTo(ws.kindButton.mas_bottom).with.offset(10);
+		make.bottom.mas_equalTo(ws.view).with.offset(-10);
 	}];
 }
 
@@ -289,24 +237,29 @@
 		[SVProgressHUD showInfoWithStatus:@"愿望不能为空，否则空欢喜一场！"];
 		return;
 	}
-	if([[self.moneyButton titleForState:UIControlStateNormal] isEqualToString:@"0功德"]){
-		[self saveWish];
-	}else{
-		NSString *moneyStr = [[self.moneyButton titleForState:UIControlStateNormal] stringByReplacingOccurrencesOfString:@"功德" withString:@"元"];
-		UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"许愿" message:[NSString stringWithFormat:@"本次许愿需花费%@", moneyStr] preferredStyle:UIAlertControllerStyleAlert];
-		UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-		UIAlertAction *ok1Action = [UIAlertAction actionWithTitle:@"确认"style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-			[SVProgressHUD showWithStatus:@"请稍候..."];
-			APPALL.myIAPDelegate = self;
-			NSString *iapID = [tooles getIAPIDByPriceStr:moneyStr payKind:EPayHY];
-			[APPALL startToIAP:iapID];
-		}];
-		[vc addAction:ok1Action];
-		[vc addAction:cancelAction];
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self presentViewController:vc animated:YES completion:nil];
-		});
-	}
+    if(!self.bigwish.length || !self.smallwish.length){
+        [SVProgressHUD setMinimumDismissTimeInterval:2.0f];
+        [SVProgressHUD showInfoWithStatus:@"请选择最适合的许愿类型！"];
+        return;
+    }
+//    if([[self.moneyButton titleForState:UIControlStateNormal] isEqualToString:@"0功德"]){
+	[self saveWish];
+//    }else{
+//        NSString *moneyStr = [[self.moneyButton titleForState:UIControlStateNormal] stringByReplacingOccurrencesOfString:@"功德" withString:@"元"];
+//        UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"许愿" message:[NSString stringWithFormat:@"本次许愿需花费%@", moneyStr] preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+//        UIAlertAction *ok1Action = [UIAlertAction actionWithTitle:@"确认"style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+//            [SVProgressHUD showWithStatus:@"请稍候..."];
+//            APPALL.myIAPDelegate = self;
+//            NSString *iapID = [tooles getIAPIDByPriceStr:moneyStr payKind:EPayHY];
+//            [APPALL startToIAP:iapID];
+//        }];
+//        [vc addAction:ok1Action];
+//        [vc addAction:cancelAction];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self presentViewController:vc animated:YES completion:nil];
+//        });
+//    }
 }
 
 -(void)xiangPressed:(id)sender {
@@ -315,29 +268,19 @@
     [self.foViewController setXiangID:self.xiangIndex];
 }
 
--(void)moneyPressed:(id)sender {
-	//8,18,50,88,138,198,268,588
-	NSArray * arr = [NSArray arrayWithObjects:@"0功德",@"8功德",@"18功德",@"50功德",@"88功德",@"138功德",@"198功德",@"268功德",@"588功德",nil];
-	if(dropDown == nil) {
-		CGFloat f = 225;
-		dropDown = [[NIDropDown alloc] showDropDown:sender :&f :arr :nil :@"down"];
-		dropDown.delegate = self;
-	}
-	else {
-		[dropDown hideDropDown:sender];
-		[self rel];
-	}
-}
-
-- (void) niDropDownDelegateMethod: (NIDropDown *) sender {
-	[self rel];
-	NSLog(@"%@", self.moneyButton.titleLabel.text);
-}
-
--(void)rel{
-	//    [dropDown release];
-	dropDown = nil;
-}
+//-(void)moneyPressed:(id)sender {
+//    //8,18,50,88,138,198,268,588
+//    NSArray * arr = [NSArray arrayWithObjects:@"0功德",@"8功德",@"18功德",@"50功德",@"88功德",@"138功德",@"198功德",@"268功德",@"588功德",nil];
+//    if(dropDown == nil) {
+//        CGFloat f = 225;
+//        dropDown = [[NIDropDown alloc] showDropDown:sender :&f :arr :nil :@"down"];
+//        dropDown.delegate = self;
+//    }
+//    else {
+//        [dropDown hideDropDown:sender];
+//        [self rel];
+//    }
+//}
 
 -(void)kindPressed:(id)sender {
 	[[MOFSPickerManager shareManger] showMOFSWishTypePickerWithTitle:nil cancelTitle:@"取消" commitTitle:@"完成" commitBlock:^(NSString *bwish, NSString *swish) {
@@ -356,16 +299,17 @@
 
 -(void)saveWish {
 	AVObject *todoFolder = [[AVObject alloc] initWithClassName:@"WishTree"];
-	AVUser *currentUser = [AVUser currentUser];
-	[todoFolder setObject:currentUser[@"nickname"] forKey:@"nickname"];
-	[todoFolder setObject:currentUser[@"username"] forKey:@"username"];
+	[todoFolder setObject:APPALL.myUserItem.username forKey:@"username"];
 	[todoFolder setObject:self.contentField.text forKey:@"content"];
-	[todoFolder setObject:self.bigwish forKey:@"bigwish"];
-	[todoFolder setObject:self.smallwish forKey:@"smallwish"];
-	NSString *goldstr = [self.moneyButton titleForState:UIControlStateNormal];
-	int goldnum = [[goldstr substringToIndex:goldstr.length - 1] intValue];
+    [todoFolder setObject:[NSString stringWithFormat:@"%@-%@", self.bigwish, self.smallwish] forKey:@"title"];
+    [todoFolder setObject:[NSNumber numberWithInt:self.xiangIndex] forKey:@"xiangid"];
+    [todoFolder setObject:self.foDropDown.text forKey:@"foname"];
+    [todoFolder setObject:self.bigwish forKey:@"bigwish"];
+    [todoFolder setObject:self.smallwish forKey:@"smallwish"];
+//    NSString *goldstr = [self.moneyButton titleForState:UIControlStateNormal];
+//    int goldnum = [[goldstr substringToIndex:goldstr.length - 1] intValue];
+    int goldnum = 0;
 	[todoFolder setObject:[NSNumber numberWithInt:goldnum] forKey:@"gold"];
-	[todoFolder setObject:[NSNumber numberWithInteger:self.luck_no] forKey:@"luck_no"];
 	NSDate *saveDate = [NSDate dateWithTimeIntervalSinceNow:goldnum * 86400];
 	[todoFolder setObject:saveDate forKey:@"wishdate"];
 	[todoFolder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
