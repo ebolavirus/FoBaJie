@@ -111,6 +111,17 @@
     self.FoImageView.image = [UIImage imageNamed:[tooles getPicNameByFoName:aFoName]];
 }
 
+-(void)setVoterName:(NSString*)aVoterName {
+	self.VoterNameLabel.text = [NSString stringWithFormat:@"善信: %@", aVoterName];
+	if (aVoterName.length <= 0) {
+		self.VoterNameLabel.hidden = YES;
+		self.VoterBgImageView.hidden = YES;
+	} else {
+		self.VoterNameLabel.hidden = NO;
+		self.VoterBgImageView.hidden = NO;
+	}
+}
+
 -(void)setXiangID:(int)aXiangID {
     self.FlowerImageView.image = [UIImage imageNamed:[tooles getXiangPicNameByXiangID:aXiangID]];
 }

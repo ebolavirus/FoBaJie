@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)setFoName:(NSString*)aFoName;
 -(void)setXiangID:(int)aXiangID;
+-(void)setVoterName:(NSString*)aVoterName;
 
 @end
 

@@ -22,24 +22,24 @@ typedef enum {
 	EStoreReachFailed,
 }EReachedTag;
 
-static NSString * const kIAPXY_8 = @"xxuyuan_0";
-static NSString * const kIAPXY_18 = @"xxuyuan_2";
-static NSString * const kIAPXY_50 = @"xxuyuan_3";
-static NSString * const kIAPXY_88 = @"xxuyuan_4";
-static NSString * const kIAPXY_138 = @"xxuyuan_5";
-static NSString * const kIAPXY_198 = @"xxuyuan_6";
-static NSString * const kIAPXY_268 = @"xxuyuan_7";
-static NSString * const kIAPXY_588 = @"xxuyuan_8";
+static NSString * const kIAPXY_8 = @"fxuyuan_0";
+static NSString * const kIAPXY_18 = @"fxuyuan_2";
+static NSString * const kIAPXY_50 = @"fxuyuan_3";
+static NSString * const kIAPXY_88 = @"fxuyuan_4";
+static NSString * const kIAPXY_138 = @"fxuyuan_5";
+static NSString * const kIAPXY_198 = @"fxuyuan_6";
+static NSString * const kIAPXY_268 = @"fxuyuan_7";
+static NSString * const kIAPXY_588 = @"fxuyuan_8";
 
-static NSString * const kIAPFN_1 = @"xfeng_1";
-static NSString * const kIAPFN_8 = @"xfeng_2";
-static NSString * const kIAPFN_50 = @"xfeng_3";
-static NSString * const kIAPFN_98 = @"xfeng_4";
-static NSString * const kIAPFN_298 = @"xfeng_5";
+static NSString * const kIAPFN_1 = @"fofeng_1";
+static NSString * const kIAPFN_8 = @"fofeng_2";
+static NSString * const kIAPFN_50 = @"fofeng_3";
+static NSString * const kIAPFN_98 = @"fofeng_4";
+static NSString * const kIAPFN_298 = @"fofeng_5";
 
-static NSString * const kIAPXH_8 = @"xxiang_1";
-static NSString * const kIAPXH_98 = @"xxiang_2";
-static NSString * const kIAPXH_198 = @"xxiang_3";
+static NSString * const kIAPXH_8 = @"fxiang_1";
+static NSString * const kIAPXH_98 = @"fxiang_2";
+static NSString * const kIAPXH_198 = @"fxiang_3";
 
 @protocol VCIAPDelegate<NSObject>
 @optional

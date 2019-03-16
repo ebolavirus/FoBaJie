@@ -40,7 +40,7 @@
 	
 	self.myKGModal = [KGModal sharedInstance];
 	[self.myKGModal setTapOutsideToDismiss:YES];
-	[self.myKGModal setCloseButtonType:KGModalCloseButtonTypeNone];
+	[self.myKGModal setCloseButtonType:KGModalCloseButtonTypeRight];
 	[self.myKGModal setModalBackgroundColor:[UIColor clearColor]];
 	
 	self.globalDBManager = [LKDBHelper getUsingLKDBHelper];
